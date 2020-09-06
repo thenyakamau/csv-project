@@ -48,7 +48,9 @@
     <div class="card mt-4">
         <div class="card-header records_header">
             <h4>Records</h4>
-            <label>Go TO</label>
+            <form action="{{url('/upload')}}" method="GET">
+              <button type="submit" class="btn btn-outline-primary">Upload File</button>
+            </form>
         </div>
         <div class="card-body">
             <table class="table table-striped">
