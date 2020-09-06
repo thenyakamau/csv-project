@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/upload', function () {
+    return view('upload');
+});
+
+Route::get('/getRecords', 'RecordsController@getRecords');
+Route::post('/postRecord', 'RecordsController@postRecord');
+Route::post('/import', 'RecordsController@importExcel');
