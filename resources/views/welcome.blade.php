@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{url('/assets/images/logo_main.png')}}" type="image/png">
-    <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{url('css/all.css')}}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{url('css/style.css')}}">
-    <title>ICD Records</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
 
     <div class="container mt-4">
-        <h1 class="display-4 text-center">
-            <i class="fas fa-book-open text-primary"></i> My<span class="text-primary">ICD</span
-        >List
-      </h1>
-
+        @if (session('success'))
+        <div data-form-alert="true">
+            <div
+              data-form-alert-success="true"
+              class="alert alert-form alert-success text-xs-center"
+            >
+            {{session('success')}}
+            </div>
+          </div>
+        @else
+        <div data-form-alert="true">
+            <div
+              data-form-alert-success="true"
+              class="alert alert-form alert-warning text-xs-center"
+            >
+            {{session('message')}}
+            </div>
+          </div>
+        @endif
       <div class="search_bar">
           <div class="card drop_down" id="drop_down_id">
            
@@ -48,28 +52,49 @@
     <div class="card mt-4">
         <div class="card-header records_header">
             <h4>Records</h4>
-            <form action="{{url('/upload')}}" method="GET">
-              <button type="submit" class="btn btn-outline-primary">Upload File</button>
-            </form>
         </div>
         <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>ICD-9</th>
-                    <th>Description</th>
-                    <th></th>
-                    <th>ICD-10</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
+            <table class="table table-striped table-responsive">
+                <thead id="table-ic-head"></thead>
                 <tbody id="record-list"></tbody>
               </table>
         </div>
     </div>
-
+    <div id="simpleModal" class="_modal">
+      <div class="modal_content">
+        <span id="closeBtn" class="close_btn">&times;</span>
+            <div class="modal-header">
+                <center>
+                    <p>Sugget Record Edit</p>
+                </center>
+            </div>
+            <div class="modal-body">
+                <form id="modal-form" method="POST" action="{{url('/postSuggestions')}}">
+                    @csrf
+                  <div class="form-group">
+                    <label>id</label>
+                    <input type="text" id="modal-id" name="id" class="form-control"/>
+                </div>
+                    <div class="form-group">
+                        <label >Ic9 code</label>
+                        <input type="text" id="modal-ic9-code" name="ic9code" class="form-control" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <label >Ic9 description</label>
+                        <input type="text" id="modal-ic9-description" name="ic9descriptionsuggest" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                      <label >Ic10 code</label>
+                      <input type="text" id="modal-ic10-code" name="ic10code" class="form-control" disabled/>
+                  </div>
+                  <div class="form-group">
+                      <label >Ic10 description</label>
+                      <input type="text" id="modal-ic10-description" name="ic10descriptionsuggest" class="form-control" />
+                  </div>
+                    <input type="submit" value="Submit Suggestion" class="btn btn-primary btn-block" id="" />
+                </form>
+            </div>
     </div>
-
-    <script src="{{asset('js/main.js')}}" type="text/javascript"></script>
-</body>
-</html>
+    </div>
+    </div>
+@endsection

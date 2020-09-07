@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Records;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class RecordsImport implements ToModel
+class RecordsImport implements ToModel, WithStartRow
 {
     /**
      * @param array $row
@@ -21,5 +22,13 @@ class RecordsImport implements ToModel
             'ICD-10-AM 1st edition code map 1' => $row[4],
             'ICD-10-AM code description map 1' => $row[10],
         ]);
+    }
+
+    /**
+     * @return int
+     */
+    public function startRow(): int
+    {
+        return 3;
     }
 }

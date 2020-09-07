@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/upload', function () {
-    return view('upload');
-});
+})->name('welcome');
+
 
 Route::get('/getRecords', 'RecordsController@getRecords');
-Route::post('/postRecord', 'RecordsController@postRecord');
-Route::post('/import', 'RecordsController@importExcel');
+Route::get('/getRecord', 'RecordsController@getRecord');
+
+Auth::routes();
+Route::middleware('auth:web')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/postSuggestions', 'SuggestionsController@postSuggestions');
+});
