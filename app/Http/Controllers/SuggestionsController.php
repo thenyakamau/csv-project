@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SuggestionExport;
 use App\Suggestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SuggestionsController extends Controller
 {
@@ -35,6 +37,7 @@ class SuggestionsController extends Controller
         $suggestion->record_id = $request->id;
         $suggestion->ic9descriptionsuggest = $request->ic9descriptionsuggest;
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
+        $suggestion->reason = $request->reason;
 
         if ($suggestion->save()) {
             return redirect()->back()->with(['success' => 'Suggestion has been submitted']);
@@ -51,5 +54,10 @@ class SuggestionsController extends Controller
         } else {
             return redirect()->back()->with(['message' => 'Something went wrong']);
         }
+    }
+
+    public function getSuggestionsExport()
+    {
+        return Excel::download(new SuggestionExport, 'suggestions.xlsx');
     }
 }

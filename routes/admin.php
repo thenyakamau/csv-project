@@ -29,4 +29,6 @@ Route::middleware(['auth:web', 'admin'])->group(function () {
     Route::post('/import', 'RecordsController@importExcel');
 
     Route::get('/suggestion/{id}', 'SuggestionsController@deleteSuggestion');
+
+    Route::get('/getSuggestionsExport', 'SuggestionsController@getSuggestionsExport');
 });

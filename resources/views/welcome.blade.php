@@ -91,6 +91,10 @@
                       <label >Ic10 description</label>
                       <input type="text" id="modal-ic10-description" name="ic10descriptionsuggest" class="form-control" />
                   </div>
+                  <div class="form-group">
+                    <label >Reason</label>
+                    <input type="text" id="modal-reason" name="reason" class="form-control" />
+                </div>
                     <input type="submit" value="Submit Suggestion" class="btn btn-primary btn-block" id="" />
                 </form>
             </div>

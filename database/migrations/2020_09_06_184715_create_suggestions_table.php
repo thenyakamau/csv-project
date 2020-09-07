@@ -19,6 +19,7 @@ class CreateSuggestionsTable extends Migration
             $table->string('ic10descriptionsuggest')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('record_id');
+            $table->longText('reason')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

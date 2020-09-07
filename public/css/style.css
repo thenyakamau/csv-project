@@ -110,3 +110,9 @@ input[type="file"] {
     color: black;
     text-decoration: none;
 }
+
+.admin_container {
+    max-width: 1200px;
+    position: absolute;
+    left: 18%;
+}

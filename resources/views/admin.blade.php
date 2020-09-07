@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="admin_container">
   @if (session('success'))
   <div data-form-alert="true">
       <div
@@ -38,6 +38,7 @@
     <div class="card mt-4">
       <div class="card-header records_header">
           <h4>Suggestions</h4>
+          <a href="/admin/getSuggestionsExport" class="btn btn-outline-primary">DownLoad Suggestions</a>
       </div>
       <div class="card-body">
           <table class="table table-striped table-responsive">
@@ -52,6 +53,7 @@
                 <th>ICD-10-Description</th>
                 <th></th>
                 <th>DescriptionChange</th>
+                <th>Reason</th>
                 <th>Id</th>
                 <th>Actions</th>
               </tr>
@@ -69,6 +71,7 @@
                    <td class="text-danger">{{$suggestion->ic10description}}</td>
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic10descriptionsuggest}}</td>
+                   <td class="text-primary">{{$suggestion->reason}}</td>
                    <td>{{$suggestion->record_id}}</td>
                 <td><a href="/admin/updateRecord?id={{$suggestion->id}}&ic9descriptionsuggest={{$suggestion->ic9descriptionsuggest}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&record_id={{$suggestion->record_id}}"
                    class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-check edit"></i></a> 
