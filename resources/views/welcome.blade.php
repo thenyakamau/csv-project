@@ -26,8 +26,8 @@
           <div class="card drop_down" id="drop_down_id">
            
                 <select class="form-control drop_down_items" id="category-selector">
-                  <option value="ICD-9-BPA code">ICD-9</option>
-                  <option value="ICD-10-AM 1st edition code map 1">ICD-10</option>
+                  <option value="ICD-9-BPA code">ICD-9 -> ICD-10AM</option>
+                  <option value="ICD-10-AM 1st edition code map 1">ICD-10AM -> ICD-9</option>
                 </select>
             
           </div>

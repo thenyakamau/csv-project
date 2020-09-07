@@ -58,6 +58,6 @@ class SuggestionsController extends Controller
 
     public function getSuggestionsExport()
     {
-        return Excel::download(new SuggestionExport, 'suggestions.xlsx');
+        return Excel::download(new SuggestionExport, 'suggestions.csv');
     }
 }

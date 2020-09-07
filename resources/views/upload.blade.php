@@ -3,7 +3,7 @@
 @section('content')
    <div class="container-sm">
     <div class="card">
-        <div class="card-header"><h4>Upload a file</h4></div>
+        <div class="card-header"><h4>Upload the csv file</h4></div>
         <div class="card-body card_display">
             <h1 class="display-4 text-center">
                 <i class="fas fa-cloud-upload-alt text-primary"></i>
