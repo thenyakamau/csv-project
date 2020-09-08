@@ -38,19 +38,26 @@
     <div class="card mt-4">
       <div class="card-header records_header">
           <h4>Suggestions</h4>
-          <a href="/admin/getSuggestionsExport" class="btn btn-outline-primary">DownLoad Suggestions</a>
+          <div class="admin_suggest_widgets">
+            <select class="form-control drop_down_items" id="suggestion-selector">
+              <option value="ICD-9-mode">ICD-9 -> ICD-10AM</option>
+              <option value="ICD-10-mode">ICD-10 -> ICD-10AM</option>
+            </select>
+            <a href="/admin/getSuggestionsExport" class="btn btn-outline-primary" id="ic-link">DownLoad</a>
+            <a href="/admin/getSuggestionsTenExport" class="btn btn-outline-primary am_download" id="ic-am-link">DownLoad</a>
+          </div>
       </div>
       <div class="card-body">
-          <table class="table table-striped table-responsive">
+          <table class="table table-striped table-responsive" id="suggest-table">
               <thead>
                 <tr>
                   <th>Name</th>
                   <th>ICD-9</th>
-                <th>ICD-9-Description</th>
+                <th>Description</th>
                 <th></th>
                 <th>DescriptionChange</th>
                 <th>ICD-10</th>
-                <th>ICD-10-Description</th>
+                <th>Description</th>
                 <th></th>
                 <th>DescriptionChange</th>
                 <th>Reason</th>
@@ -76,6 +83,47 @@
                 <td><a href="/admin/updateRecord?id={{$suggestion->id}}&ic9descriptionsuggest={{$suggestion->ic9descriptionsuggest}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&record_id={{$suggestion->record_id}}"
                    class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-check edit"></i></a> 
                    <a href="/admin/suggestion/{{$suggestion->id}}" class = "btn btn-danger btn-sm m-1 delete"><i class="fas fa-times"></i></a>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+            </table>
+
+            <table class="table table-striped table-responsive suggest-ten-table" id="suggest-ten-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>ICD-10</th>
+                <th>Description</th>
+                <th></th>
+                <th>DescriptionChange</th>
+                <th>ICD-10AM</th>
+                <th>Description</th>
+                <th></th>
+                <th>DescriptionChange</th>
+                <th>Reason</th>
+                <th>Id</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+
+              <tbody id="suggestion-list">
+                @foreach($suggestionsAm as $key => $suggestion)
+                <tr>
+                   <td>{{$suggestion->name}}</td>
+                   <td>{{$suggestion->ic10code}}</td>
+                   <td class="text-danger">{{$suggestion->ic10description}}</td>
+                   <td><i class="fas fa-arrow-right text-primary"></i></td> 
+                   <td class="text-primary">{{$suggestion->ic10descriptionsuggest}}</td>
+                   <td>{{$suggestion->ic10codeam}}</td>
+                   <td class="text-danger">{{$suggestion->ic10description}}</td>
+                   <td><i class="fas fa-arrow-right text-primary"></i></td> 
+                   <td class="text-primary">{{$suggestion->ic10amdescription}}</td>
+                   <td class="text-primary">{{$suggestion->reason}}</td>
+                   <td>{{$suggestion->record_id}}</td>
+                <td><a href="/admin/updateRecordTen?id={{$suggestion->id}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&ic10amdescription={{$suggestion->ic10amdescription}}&record_id={{$suggestion->record_id}}"
+                   class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-check edit"></i></a> 
+                   <a href="/admin/suggestion_ten/{{$suggestion->id}}" class = "btn btn-danger btn-sm m-1 delete"><i class="fas fa-times"></i></a>
                   </td>
                 </tr>
               @endforeach

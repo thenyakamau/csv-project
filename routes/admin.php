@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth:web', 'admin'])->group(function () {
-    // Route::get('/', function () {
-    //     // return view('admin');
-    // });
+
     Route::get('/upload', function () {
         return view('upload');
     });
@@ -28,7 +26,12 @@ Route::middleware(['auth:web', 'admin'])->group(function () {
     Route::post('/postRecord', 'RecordsController@postRecord');
     Route::post('/import', 'RecordsController@importExcel');
 
+
+    Route::get('/updateRecordTen', 'RecordsTenController@updateRecordTen');
+
     Route::get('/suggestion/{id}', 'SuggestionsController@deleteSuggestion');
+    Route::get('/suggestion_ten/{id}', 'SuggestionsController@deleteSuggestionTen');
 
     Route::get('/getSuggestionsExport', 'SuggestionsController@getSuggestionsExport');
+    Route::get('/getSuggestionsTenExport', 'SuggestionsController@getSuggestionsTenExport');
 });

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Imports\RecordTen;
 use App\FileUpload;
 use App\Records;
+use App\RecordsTen;
 use App\Suggestion;
+use App\SuggestionTen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,12 +18,12 @@ class RecordsTenController extends Controller
     {
         if (isset($request->key)) {
             $records = DB::table('records_tens')
-                ->select('id', 'ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10code', 'ICD-10-AM code descriptor as ic10description')
+                ->select('id', 'ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10codeam', 'ICD-10-AM code descriptor as ic10amdescription')
                 ->where($request->status, 'like', '%' . $request->key . '%')
                 ->Paginate();
         } else {
             $records = DB::table('records_tens')
-                ->select('id', 'ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10code', 'ICD-10-AM code descriptor as ic10description')
+                ->select('id', 'ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10codeam', 'ICD-10-AM code descriptor as ic10amdescription')
                 ->Paginate();
         }
 
@@ -31,7 +33,7 @@ class RecordsTenController extends Controller
     public function getRecordTen(Request $request)
     {
         $record = DB::table('records_tens')
-            ->select('id', 'ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10code', 'ICD-10-AM code descriptor as ic10description')
+            ->select('id', 'ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10codeam', 'ICD-10-AM code descriptor as ic10amdescription')
             ->where('id', $request->id)
             ->get();
 
@@ -44,14 +46,14 @@ class RecordsTenController extends Controller
 
     public function updateRecordTen(Request $request)
     {
-        $record = Records::findOrFail($request->record_id);
-        $suggestion = Suggestion::findOrFail($request->id);
-        if (isset($request->ic9descriptionsuggest)) {
-            $record->{'ICD-10 code descriptor'} = $request->ic9descriptionsuggest;
+        $record = RecordsTen::findOrFail($request->record_id);
+        $suggestion = SuggestionTen::findOrFail($request->id);
+        if (isset($request->ic10descriptionsuggest)) {
+            $record->{'ICD-10 code descriptor'} = $request->ic10descriptionsuggest;
         }
 
-        if (isset($request->ic10descriptionsuggest)) {
-            $record->{'ICD-10-AM code descriptor'} = $request->ic10descriptionsuggest;
+        if (isset($request->ic10amdescription)) {
+            $record->{'ICD-10-AM code descriptor'} = $request->ic10amdescription;
         }
 
         $record->save();
@@ -76,5 +78,4 @@ class RecordsTenController extends Controller
 
         return redirect()->route('welcome');
     }
-
 }

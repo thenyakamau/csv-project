@@ -22,8 +22,12 @@ Route::get('/', function () {
 Route::get('/getRecords', 'RecordsController@getRecords');
 Route::get('/getRecord', 'RecordsController@getRecord');
 
+Route::get('/getRecordsTen', 'RecordsTenController@getRecordsTen');
+Route::get('/getRecordTen', 'RecordsTenController@getRecordTen');
+
 Auth::routes();
 Route::middleware('auth:web')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::post('/postSuggestions', 'SuggestionsController@postSuggestions');
+    Route::post('/postAmSuggestions', 'SuggestionsController@postAmSuggestions');
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FileUpload;
 use App\Imports\RecordsImport;
+use App\Imports\RecordTen;
 use App\Records;
 use App\Suggestion;
 use Illuminate\Http\Request;
@@ -67,14 +68,22 @@ class RecordsController extends Controller
     public function importExcel(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required'
+            'file' => 'required',
+            'file_ic10' => 'required'
         ]);
+        if ($request->hasFile('file')) {
+            $fileUpload = new FileUpload();
+            $fileUpload->file_name = $request->file('file')->store('/assets/uploads');
+            $fileUpload->save();
+            Excel::import(new RecordsImport, $fileUpload->file_name);
+        }
 
-        $fileUpload = new FileUpload();
-        $fileUpload->file_name = $request->file('file')->store('/assets/uploads');
-        $fileUpload->save();
-
-        Excel::import(new RecordsImport, $fileUpload->file_name);
+        if ($request->hasFile('file_ic10')) {
+            $fileUpload2 = new FileUpload();
+            $fileUpload2->file_name = $request->file('file_ic10')->store('/assets/uploads');
+            $fileUpload2->save();
+            Excel::import(new RecordTen, $fileUpload2->file_name);
+        }
 
         return redirect()->route('welcome');
     }
