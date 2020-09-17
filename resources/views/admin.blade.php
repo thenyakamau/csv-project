@@ -40,11 +40,11 @@
           <h4>Suggestions</h4>
           <div class="admin_suggest_widgets">
             <select class="form-control drop_down_items" id="suggestion-selector">
-              <option value="ICD-9-mode">ICD-9 -> ICD-10AM</option>
-              <option value="ICD-10-mode">ICD-10 -> ICD-10AM</option>
+              <option value="ICD-9-mode">ICD-9</option>
+              <option value="ICD-10-mode">ICD-10</option>
             </select>
-            <a href="/admin/getSuggestionsExport" class="btn btn-outline-primary" id="ic-link">DownLoad</a>
-            <a href="/admin/getSuggestionsTenExport" class="btn btn-outline-primary am_download" id="ic-am-link">DownLoad</a>
+            <a href="/admin/getSuggestionsExport" class="btn btn-primary" id="ic-link">DownLoad</a>
+            <a href="/admin/getSuggestionsTenExport" class="btn btn-primary am_download" id="ic-am-link">DownLoad</a>
           </div>
       </div>
       <div class="card-body">
@@ -61,8 +61,7 @@
                 <th></th>
                 <th>DescriptionChange</th>
                 <th>Reason</th>
-                <th>Id</th>
-                <th>Actions</th>
+                <th>Accept/Reject</th>
               </tr>
               </thead>
 
@@ -79,7 +78,6 @@
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic10descriptionsuggest}}</td>
                    <td class="text-primary">{{$suggestion->reason}}</td>
-                   <td>{{$suggestion->record_id}}</td>
                 <td><a href="/admin/updateRecord?id={{$suggestion->id}}&ic9descriptionsuggest={{$suggestion->ic9descriptionsuggest}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&record_id={{$suggestion->record_id}}"
                    class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-check edit"></i></a> 
                    <a href="/admin/suggestion/{{$suggestion->id}}" class = "btn btn-danger btn-sm m-1 delete"><i class="fas fa-times"></i></a>
@@ -102,7 +100,6 @@
                 <th></th>
                 <th>DescriptionChange</th>
                 <th>Reason</th>
-                <th>Id</th>
                 <th>Actions</th>
               </tr>
               </thead>
@@ -120,7 +117,6 @@
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic10amdescription}}</td>
                    <td class="text-primary">{{$suggestion->reason}}</td>
-                   <td>{{$suggestion->record_id}}</td>
                 <td><a href="/admin/updateRecordTen?id={{$suggestion->id}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&ic10amdescription={{$suggestion->ic10amdescription}}&record_id={{$suggestion->record_id}}"
                    class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-check edit"></i></a> 
                    <a href="/admin/suggestion_ten/{{$suggestion->id}}" class = "btn btn-danger btn-sm m-1 delete"><i class="fas fa-times"></i></a>

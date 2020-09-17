@@ -129,9 +129,7 @@ function createIC10Records(status, input) {
         <th>Description</th>
         <th></th>
         <th>ICD-10AM</th>
-        <th>Description</th>
-        <th>Id</th>
-        <th>Actions</th>`;
+        <th>Description</th>`;
         ten_head.appendChild(row);
         input.forEach(record => {
             displayICD10Record(record);
@@ -142,9 +140,7 @@ function createIC10Records(status, input) {
         <th>Description</th>
         <th></th>
         <th>ICD-10</th>
-        <th>Description</th>
-        <th>Id</th>
-        <th>Actions</th>`;
+        <th>Description</th>`;
         ten_head.appendChild(row);
         input.forEach(record => {
             displayICD10AMRecord(record);
@@ -159,9 +155,7 @@ function displayICD10Record(record) {
     <td>${record.ic10description}</td> 
      <td><i class="fas fa-arrow-right text-primary"></i></td> 
      <td>${record.ic10codeam}</td>
-     <td>${record.ic10amdescription}</td> 
-     <td>${record.id}</td> 
-     <td><a href="#" class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-pen edit"></i></a></td>`;
+     <td>${record.ic10amdescription}</td> `;
 
     ten_list.appendChild(row);
 }
@@ -173,9 +167,7 @@ function displayICD10AMRecord(record) {
     <td>${record.ic10amdescription}</td> 
      <td><i class="fas fa-arrow-right text-primary"></i></td> 
      <td>${record.ic10code}</td>
-     <td>${record.ic10description}</td> 
-     <td>${record.id}</td> 
-     <td><a href="#" class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-pen edit"></i></a></td>`;
+     <td>${record.ic10description}</td> `;
 
     ten_list.appendChild(row);
 }
@@ -191,13 +183,11 @@ function loadRecords(input, status) {
     }
     if (status === "ICD-10-AM 1st edition code map 1") {
         const row = document.createElement("tr");
-        row.innerHTML = `   <th>ICD-10</th>
+        row.innerHTML = `   <th>ICD-10AM</th>
         <th>Description</th>
         <th></th>
         <th>ICD-9</th>
-        <th>Description</th>
-        <th>Id</th>
-        <th>Actions</th>`;
+        <th>Description</th>`;
         head.appendChild(row);
         input.forEach(record => {
             displayIC10Record(record);
@@ -212,10 +202,8 @@ function loadRecords(input, status) {
         row.innerHTML = `   <th>ICD-9</th>
         <th>Description</th>
         <th></th>
-        <th>ICD-10</th>
-        <th>Description</th>
-        <th>Id</th>
-        <th>Actions</th>`;
+        <th>ICD-10AM</th>
+        <th>Description</th>`;
         head.appendChild(row);
         input.forEach(record => {
             displayRecord(record);
@@ -230,9 +218,7 @@ function displayIC10Record(record) {
     <td>${record.ic10description}</td> 
      <td><i class="fas fa-arrow-right text-primary"></i></td> 
      <td>${record.ic9code}</td>
-     <td>${record.ic9description}</td> 
-     <td>${record.id}</td> 
-     <td><a href="#" class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-pen edit"></i></a></td>`;
+     <td>${record.ic9description}</td> `;
 
     list.appendChild(row);
 }
@@ -243,9 +229,7 @@ function displayRecord(record) {
      <td>${record.ic9description}</td> 
      <td><i class="fas fa-arrow-right text-primary"></i></td> 
      <td>${record.ic10code}</td>
-     <td>${record.ic10description}</td> 
-     <td>${record.id}</td> 
-     <td><a href="#" class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-pen edit"></i></a></td>`;
+     <td>${record.ic10description}</td> `;
 
     list.appendChild(row);
 }

@@ -17,7 +17,7 @@
         </p>
         <center>
          
-          <a href="/search" class='btn btn-primary btn-lg'> <i class="fas fa-search"></i> Search</a>
+          <a href="/search" class='btn btn-primary btn-lg link_button'> <i class="fas fa-search"></i> Search</a>
         </center>
       </div>
     </div>
