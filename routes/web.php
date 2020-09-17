@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/search', function () {
+    return view('search');
+})->name('search');
 
 Route::get('/getRecords', 'RecordsController@getRecords');
 Route::get('/getRecord', 'RecordsController@getRecord');

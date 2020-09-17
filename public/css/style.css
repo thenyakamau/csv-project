@@ -9,6 +9,18 @@ input[type="file"] {
     width: 100%;
 }
 
+.welcome_layout {
+    min-height: 100vh;
+    width: 100%;
+    position: fixed;
+    text-align: justify;
+}
+
+.welcome_layout p {
+    font-size: 20px;
+    text-indent: 50px;
+}
+
 .nav_form_btn {
     margin-left: 20px;
 }
@@ -66,6 +78,10 @@ input[type="file"] {
     display: flex;
     width: 100%;
     justify-content: space-between;
+}
+
+.display_none {
+    display: none;
 }
 
 ._modal {
