@@ -16,17 +16,21 @@ class SuggestionsController extends Controller
     //
     public function getSuggestions()
     {
-        $suggestions = DB::table('suggestions')
-            ->join('users', 'users.id', '=', 'suggestions.user_id')
-            ->join('records', 'records.id', '=', 'suggestions.record_id')
-            ->select('ICD-9-BPA code AS ic9code', 'ICD-9-BPA code description AS ic9description', 'ICD-10-AM 1st edition code map 1 AS ic10code', 'ICD-10-AM code description map 1 as ic10description', 'name', 'suggestions.*')
-            ->get();
+        // $suggestions = DB::table('suggestions')
+        //     ->join('users', 'users.id', '=', 'suggestions.user_id')
+        //     ->join('records', 'records.id', '=', 'suggestions.record_id')
+        //     ->select('ICD-9-BPA code AS ic9code', 'ICD-9-BPA code description AS ic9description', 'ICD-10-AM 1st edition code map 1 AS ic10code', 'ICD-10-AM code description map 1 as ic10description', 'suggestions.*')
+        //     ->get();
 
-        $suggestionsAm = DB::table('suggestion_tens')
-            ->join('users', 'users.id', '=', 'suggestion_tens.user_id')
-            ->join('records_tens', 'records_tens.id', '=', 'suggestion_tens.record_id')
-            ->select('ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10codeam', 'ICD-10-AM code descriptor as ic10amdescription', 'name', 'suggestion_tens.*')
-            ->get();
+        $suggestions = Suggestion::get();
+
+        // $suggestionsAm = DB::table('suggestion_tens')
+        //     ->join('users', 'users.id', '=', 'suggestion_tens.user_id')
+        //     ->join('records_tens', 'records_tens.id', '=', 'suggestion_tens.record_id')
+        //     ->select('ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10codeam', 'ICD-10-AM code descriptor as ic10amdescription', 'name', 'suggestion_tens.*')
+        //     ->get();
+
+        $suggestionsAm = SuggestionTen::get();
 
         return view('admin', compact('suggestions', 'suggestionsAm'));
     }
@@ -41,8 +45,13 @@ class SuggestionsController extends Controller
 
         $suggestion = new Suggestion();
         $suggestion->user_id = Auth::user()->id;
+        $suggestion->name = Auth::user()->name;
         $suggestion->record_id = $request->id;
+        $suggestion->ic9code = $request->ic9code;
+        $suggestion->ic9description = $request->ic9description;
         $suggestion->ic9descriptionsuggest = $request->ic9descriptionsuggest;
+        $suggestion->ic10code = $request->ic10code;
+        $suggestion->ic10description = $request->ic10description;
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
         $suggestion->reason = $request->reason;
 
@@ -62,8 +71,13 @@ class SuggestionsController extends Controller
         ]);
         $suggestion = new SuggestionTen();
         $suggestion->user_id = Auth::user()->id;
+        $suggestion->name = Auth::user()->name;
         $suggestion->record_id = $request->id;
+        $suggestion->ic10amcode = $request->ic10amcode;
+        $suggestion->ic10amdescription = $request->ic10amdescription;
         $suggestion->ic10amdescriptionsuggest = $request->ic10amdescriptionsuggest;
+        $suggestion->ic10code = $request->ic10code;
+        $suggestion->ic10description = $request->ic10description;
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
         $suggestion->reason = $request->reason;
 
