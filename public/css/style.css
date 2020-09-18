@@ -128,6 +128,10 @@ input[type="file"] {
     text-decoration: none;
 }
 
+.admin_section {
+    position: relative;
+}
+
 .admin_container {
     position: absolute;
     left: 10%;

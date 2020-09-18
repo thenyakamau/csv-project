@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid justify-content-center admin_container">
+<div class="container-fluid row justify-content-center">
    <div class="col-lg-9 col-md-9">
     @if (session('success'))
     <div data-form-alert="true">
