@@ -22,6 +22,10 @@ Route::get('/search', function () {
     return view('search');
 })->name('search');
 
+Route::get('/map', function () {
+    return view('mapping');
+})->name('map');
+
 Route::get('/getRecords', 'RecordsController@getRecords');
 Route::get('/getRecord', 'RecordsController@getRecord');
 

@@ -129,9 +129,8 @@ input[type="file"] {
 }
 
 .admin_container {
-    max-width: 1200px;
     position: absolute;
-    left: 18%;
+    left: 10%;
 }
 
 .record_ten_table {
@@ -152,4 +151,9 @@ input[type="file"] {
 
 .suggest-ten-table {
     display: none;
+}
+
+.link_button {
+    width: 150px;
+    height: 50px;
 }

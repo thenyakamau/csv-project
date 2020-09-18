@@ -50,10 +50,12 @@ class RecordsController extends Controller
         $record = Records::findOrFail($request->record_id);
         $suggestion = Suggestion::findOrFail($request->id);
         if (isset($request->ic9descriptionsuggest)) {
+            $record->{'ICD-9-BPA code'} = $request->ic9codesuggest;
             $record->{'ICD-9-BPA code description'} = $request->ic9descriptionsuggest;
         }
 
         if (isset($request->ic10descriptionsuggest)) {
+            $record->{'ICD-10-AM 1st edition code map 1'} = $request->ic10codesuggest;
             $record->{'ICD-10-AM code description map 1'} = $request->ic10descriptionsuggest;
         }
 
