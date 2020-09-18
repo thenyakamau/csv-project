@@ -26,9 +26,10 @@
       <div class="search_bar">
           <div class="card drop_down" id="drop_down_id">
            
-                <select class="form-control drop_down_items" id="category-selector-mapping">
-                  <option value="ICD-9-BPA code">ICD-9</option>
-                  <option value="ICD-10 code">ICD-10</option>
+                <select class="form-control drop_doAwn_items" id="category-selector-mapping">
+                  <option value="ICD-9-BPA code">ICD-9 -> ICD-10AM</option>
+                  <option value="ICD9_Code">ICD-9 -> ICD-10</option>
+                  <option value="ICD-10 code">ICD-10 -> ICD-10AM</option>
                 </select>
             
           </div>
@@ -78,6 +79,7 @@
             </form>
         </div>
     </div>
+
     <div class="card display_none" id="form-mapping2">
       <div class="card-header">
           Edit Mapping
@@ -113,6 +115,44 @@
               <input type="submit" value="Submit Suggestion" class="btn btn-primary btn-block" id="" />
           </form>
       </div>
+    </div>
+
+    <div class="card display_none" id="form-mapping3">
+        <div class="card-header">
+            Edit Mapping
+        </div>
+        <div class="card-body">
+            <form  method="POST" action="{{url('/post10Suggestion')}}">
+                @csrf
+                <input type="hidden" id="mapping-id3" name="id" class="form-control"/>
+            
+                <div class="form-group">
+                    <label >Ic9 code</label>
+                    <input type="hidden" id="mapping-ic9-code2" name="ic9code" class="form-control" />
+                    <input type="text" id="mapping-ic9-code-input2" name="ic9codeinput" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label >Ic9 description</label>
+                    <input type="hidden" id="mapping-ic9-description2" name="ic9description" class="form-control" />
+                    <input type="text" id="mapping-ic9-description-input2" name="ic9descriptionsuggest" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label >Ic10 code</label>
+                  <input type="hidden" id="mapping-ic10-code2" name="ic10code" class="form-control"/>
+                  <input type="text" id="mapping-ic10-code-input2" name="ic10codeinput" class="form-control" />
+              </div>
+              <div class="form-group">
+                  <label >Ic10 description</label>
+                  <input type="hidden" id="mapping-ic10-description2" name="ic10description" class="form-control" />
+                  <input type="text" id="mapping-ic10-description-input2" name="ic10descriptionsuggest" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label >Reason</label>
+                <textarea name="reason" id="" rows="5" class="form-control" placeholder="Please input reason for change" id="mapping-reason3"  ></textarea>
+            </div>
+                <input type="submit" value="Submit Suggestion" class="btn btn-primary btn-block" id="" />
+            </form>
+        </div>
       </div>
 </div>
 

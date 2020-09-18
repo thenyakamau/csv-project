@@ -44,13 +44,54 @@
             <select class="form-control drop_down_items" id="suggestion-selector">
               <option value="ICD-9-mode">ICD-9</option>
               <option value="ICD-10-mode">ICD-10</option>
+              <option value="ICD-10am-mode">ICD-10AM</option>
             </select>
             <a href="/admin/getSuggestionsExport" class="btn btn-primary" id="ic-link">DownLoad</a>
+            <a href="/admin/getSuggestionsTenExport" class="btn btn-primary am_download" id="ic-nine-link">DownLoad</a>
             <a href="/admin/getSuggestionsTenExport" class="btn btn-primary am_download" id="ic-am-link">DownLoad</a>
           </div>
       </div>
       <div class="card-body">
           <table class="table table-striped table-responsive" id="suggest-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Mapping</th>
+                  <th>MappingChange</th>
+                <th>Ic9Description</th>
+                <th></th>
+                <th>DescriptionChange</th>
+                <th>Ic10amDescription</th>
+                <th></th>
+                <th>DescriptionChange</th>
+                <th>Reason</th>
+                <th>Accept/Reject</th>
+              </tr>
+              </thead>
+
+              <tbody id="suggestion-list">
+                @foreach($suggestions as $key => $suggestion)
+                <tr>
+                   <td>{{$suggestion->name}}</td>
+                   <td class="text-danger">{{$suggestion->ic9code}}->{{$suggestion->ic10code}}</td>
+                   <td class="text-primary">{{$suggestion->ic9codesuggest}}->{{$suggestion->ic10codesuggest}}</td>
+                   <td class="text-danger">{{$suggestion->ic9description}}</td>
+                   <td><i class="fas fa-arrow-right text-primary"></i></td> 
+                   <td class="text-primary">{{$suggestion->ic9descriptionsuggest}}</td>
+                   <td class="text-danger">{{$suggestion->ic10description}}</td>
+                   <td><i class="fas fa-arrow-right text-primary"></i></td> 
+                   <td class="text-primary">{{$suggestion->ic10descriptionsuggest}}</td>
+                   <td class="text-primary">{{$suggestion->reason}}</td>
+                <td><a href="/admin/updateRecord?id={{$suggestion->id}}&ic9codesuggest={{$suggestion->ic9codesuggest}}&ic10codesuggest={{$suggestion->ic10codesuggest}}&ic9descriptionsuggest={{$suggestion->ic9descriptionsuggest}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&record_id={{$suggestion->record_id}}"
+                   class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-check edit"></i></a> 
+                   <a href="/admin/suggestion/{{$suggestion->id}}" class = "btn btn-danger btn-sm m-1 delete"><i class="fas fa-times"></i></a>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+            </table>
+
+            <table class="table table-striped table-responsive display_none" id="suggest-nine-table">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -67,8 +108,8 @@
               </tr>
               </thead>
 
-              <tbody id="suggestion-list">
-                @foreach($suggestions as $key => $suggestion)
+              <tbody id="suggestion-list2">
+                @foreach($suggestions10 as $key => $suggestion)
                 <tr>
                    <td>{{$suggestion->name}}</td>
                    <td class="text-danger">{{$suggestion->ic9code}}->{{$suggestion->ic10code}}</td>
@@ -106,7 +147,7 @@
               </tr>
               </thead>
 
-              <tbody id="suggestion-list">
+              <tbody id="suggestion-list3">
                 @foreach($suggestionsAm as $key => $suggestion)
                 <tr>
                    <td>{{$suggestion->name}}</td>

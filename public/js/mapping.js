@@ -1,5 +1,6 @@
 let ic9form = document.querySelector("#form-mapping");
-let ic10form = document.querySelector("#form-mapping2");
+let ic10formam = document.querySelector("#form-mapping2");
+let ic10form = document.querySelector("#form-mapping3");
 
 function fetchIc10AMRecord(key, status) {
     fetch(`/getRecordsTen?key=${key}&status=${status}`, {
@@ -17,6 +18,7 @@ function fetchIc10AMRecord(key, status) {
         .catch(error => {
             ic9form.style.display = "none";
             ic10form.style.display = "none";
+            ic10formam.style.display = "none";
             window.alert("Record not found");
         });
 }
@@ -37,6 +39,28 @@ function getRecord(key, status) {
         .catch(error => {
             ic9form.style.display = "none";
             ic10form.style.display = "none";
+            ic10formam.style.display = "none";
+            window.alert("Record not found");
+        });
+}
+
+function getIc9to10Records(key, status) {
+    fetch(`/fetchIc9to10Records?key=${key}&status=${status}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        }
+    })
+        .then(res => res.json())
+        .then(resJson => {
+            let response = resJson.records.data[0];
+            inputIc9to10Records(response);
+        })
+        .catch(error => {
+            ic9form.style.display = "none";
+            ic10form.style.display = "none";
+            ic10formam.style.display = "none";
             window.alert("Record not found");
         });
 }
@@ -45,6 +69,7 @@ function loadIcd9Record(record) {
     if (record.id) {
         ic9form.style.display = "block";
         ic10form.style.display = "none";
+        ic10formam.style.display = "none";
 
         document.querySelector("#mapping-id").value = record.id;
         document.querySelector("#mapping-ic9-code").value = record.ic9code;
@@ -64,6 +89,7 @@ function loadIcd9Record(record) {
     } else {
         ic9form.style.display = "none";
         ic10form.style.display = "none";
+        ic10formam.style.display = "none";
         window.alert("Record not found");
     }
 }
@@ -71,7 +97,8 @@ function loadIcd9Record(record) {
 function loadIcd10Record(record) {
     if (record.id) {
         ic9form.style.display = "none";
-        ic10form.style.display = "block";
+        ic10form.style.display = "none";
+        ic10formam.style.display = "block";
 
         document.querySelector("#mapping-id2").value = record.id;
         document.querySelector("#mapping-ic10-code").value = record.ic10code;
@@ -92,6 +119,37 @@ function loadIcd10Record(record) {
     } else {
         ic9form.style.display = "none";
         ic10form.style.display = "none";
+        ic10formam.style.display = "none";
+        window.alert("Record not found");
+    }
+}
+
+function inputIc9to10Records(record) {
+    if (record.id) {
+        console.log(record);
+        ic9form.style.display = "none";
+        ic10form.style.display = "block";
+        ic10formam.style.display = "none";
+
+        document.querySelector("#mapping-id3").value = record.id;
+        document.querySelector("#mapping-ic9-code2").value = record.ICD9_Code;
+        document.querySelector("#mapping-ic9-code-input2").value =
+            record.ICD9_Code;
+        document.querySelector("#mapping-ic9-description2").value =
+            record.ICD9_Description;
+        document.querySelector("#mapping-ic9-description-input2").value =
+            record.ICD9_Description;
+        document.querySelector("#mapping-ic10-code2").value = record.ICD10_Code;
+        document.querySelector("#mapping-ic10-code-input2").value =
+            record.ICD10_Code;
+        document.querySelector("#mapping-ic10-description2").value =
+            record.ICD10_Descriptiom;
+        document.querySelector("#mapping-ic10-description-input2").value =
+            record.ICD10_Descriptiom;
+    } else {
+        ic9form.style.display = "none";
+        ic10form.style.display = "none";
+        ic10formam.style.display = "none";
         window.alert("Record not found");
     }
 }
@@ -103,6 +161,8 @@ document.querySelector("#search_button_map").addEventListener("click", () => {
     if (key) {
         if (status === "ICD-10 code") {
             fetchIc10AMRecord(key, status);
+        } else if (status === "ICD9_Code") {
+            getIc9to10Records(key, status);
         } else {
             getRecord(key, status);
         }

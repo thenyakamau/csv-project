@@ -32,8 +32,10 @@
         <form action="{{url('/admin/import')}}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <label class="text-primary">Upload Ic9 to Ic10 csv files</label>
+            <input name="file_ic9" type="file" class="form-group" id="file_input">
+            <label class="text-primary">Upload Ic9 to Ic10AM csv files</label>
             <input name="file" type="file" class="form-group" id="file_input">
-            <label class="text-primary">Upload Ic10 to Ic10A csv files</label>
+            <label class="text-primary">Upload Ic10 to Ic10AM csv files</label>
             <input name="file_ic10" type="file" class="form-group" id="file_input">
             <button type="submit" class="btn btn-lg btn-block btn-primary upload_button">Upload</button>
         </form>

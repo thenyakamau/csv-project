@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Exports\SuggestionExport;
 use App\Exports\SuggestionTenExport;
 use App\Suggestion;
+use App\SuggestionNine;
 use App\SuggestionTen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SuggestionsController extends Controller
@@ -18,8 +18,9 @@ class SuggestionsController extends Controller
     {
         $suggestions = Suggestion::get();
         $suggestionsAm = SuggestionTen::get();
+        $suggestions10 = SuggestionNine::get();
 
-        return view('admin', compact('suggestions', 'suggestionsAm'));
+        return view('admin', compact('suggestions', 'suggestionsAm', 'suggestions10'));
     }
 
     public function postSuggestions(Request $request)
@@ -66,6 +67,35 @@ class SuggestionsController extends Controller
         $suggestion->ic10amcodesuggest = $request->ic10amcodeinput;
         $suggestion->ic10amdescription = $request->ic10amdescription;
         $suggestion->ic10amdescriptionsuggest = $request->ic10amdescriptionsuggest;
+        $suggestion->ic10code = $request->ic10code;
+        $suggestion->ic10codesuggest = $request->ic10codeinput;
+        $suggestion->ic10description = $request->ic10description;
+        $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
+        $suggestion->reason = $request->reason;
+
+        if ($suggestion->save()) {
+            return redirect()->back()->with(['success' => 'Suggestion has been submitted']);
+        } else {
+            return redirect()->back()->with(['message' => 'Something went wrong']);
+        }
+    }
+
+    public function post10Suggestion(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required',
+            'ic9descriptionsuggest' => 'required',
+            'ic10descriptionsuggest' => 'required',
+        ]);
+
+        $suggestion = new SuggestionNine();
+        $suggestion->user_id = Auth::user()->id;
+        $suggestion->name = Auth::user()->name;
+        $suggestion->record_id = $request->id;
+        $suggestion->ic9code = $request->ic9code;
+        $suggestion->ic9codesuggest = $request->ic9codeinput;
+        $suggestion->ic9description = $request->ic9description;
+        $suggestion->ic9descriptionsuggest = $request->ic9descriptionsuggest;
         $suggestion->ic10code = $request->ic10code;
         $suggestion->ic10codesuggest = $request->ic10codeinput;
         $suggestion->ic10description = $request->ic10description;

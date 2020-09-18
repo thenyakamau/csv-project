@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FileUpload;
+use App\Imports\RecordNineImport;
 use App\Imports\RecordsImport;
 use App\Imports\RecordTen;
 use App\Records;
@@ -19,7 +20,7 @@ class RecordsController extends Controller
         if (isset($request->key)) {
             $records = DB::table('records')
                 ->select('id', 'ICD-9-BPA code AS ic9code', 'ICD-9-BPA code description AS ic9description', 'ICD-10-AM 1st edition code map 1 AS ic10code', 'ICD-10-AM code description map 1 as ic10description')
-                ->where($request->status, 'like', '%' . $request->key . '%')
+                ->where($request->status, $request->key)
                 ->Paginate();
         } else {
             $records = DB::table('records')
@@ -28,6 +29,21 @@ class RecordsController extends Controller
                 ->Paginate();
         }
 
+        return response()->json(['records' => $records]);
+    }
+
+    public function fetchIc9to10Records(Request $request)
+    {
+        if (isset($request->key)) {
+            $records = DB::table('record_nines')
+                ->select('*')
+                ->where($request->status, $request->key)
+                ->Paginate();
+        } else {
+            $records = DB::table('record_nines')
+                ->select('*')
+                ->Paginate();
+        }
         return response()->json(['records' => $records]);
     }
 
@@ -71,7 +87,8 @@ class RecordsController extends Controller
     {
         $this->validate($request, [
             'file' => 'required',
-            'file_ic10' => 'required'
+            'file_ic10' => 'required',
+            'file_ic9' => 'required'
         ]);
         if ($request->hasFile('file')) {
             $fileUpload = new FileUpload();
@@ -85,6 +102,13 @@ class RecordsController extends Controller
             $fileUpload2->file_name = $request->file('file_ic10')->store('/assets/uploads');
             $fileUpload2->save();
             Excel::import(new RecordTen, $fileUpload2->file_name);
+        }
+
+        if ($request->hasFile('file_ic9')) {
+            $fileUpload3 = new FileUpload();
+            $fileUpload3->file_name = $request->file('file_ic9')->store('/assets/uploads');
+            $fileUpload3->save();
+            Excel::import(new RecordNineImport, $fileUpload3->file_name);
         }
 
         return redirect()->route('welcome');

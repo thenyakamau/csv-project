@@ -19,7 +19,7 @@ class RecordsTenController extends Controller
         if (isset($request->key)) {
             $records = DB::table('records_tens')
                 ->select('id', 'ICD-10 code AS ic10code', 'ICD-10 code descriptor AS ic10description', 'ICD-10-AM Map AS ic10codeam', 'ICD-10-AM code descriptor as ic10amdescription')
-                ->where($request->status, 'like', '%' . $request->key . '%')
+                ->where($request->status, $request->key)
                 ->Paginate();
         } else {
             $records = DB::table('records_tens')
