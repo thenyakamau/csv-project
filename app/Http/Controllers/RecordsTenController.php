@@ -49,10 +49,12 @@ class RecordsTenController extends Controller
         $record = RecordsTen::findOrFail($request->record_id);
         $suggestion = SuggestionTen::findOrFail($request->id);
         if (isset($request->ic10descriptionsuggest)) {
+            $record->{'ICD-10 code'} = $request->ic10codesuggest;
             $record->{'ICD-10 code descriptor'} = $request->ic10descriptionsuggest;
         }
 
         if (isset($request->ic10amdescription)) {
+            $record->{'ICD-10-AM Map'} = $request->ic10amcodesuggest;
             $record->{'ICD-10-AM code descriptor'} = $request->ic10amdescription;
         }
 

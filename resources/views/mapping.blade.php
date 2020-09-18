@@ -53,7 +53,7 @@
                 <div class="form-group">
                     <label >Ic9 code</label>
                     <input type="hidden" id="mapping-ic9-code" name="ic9code" class="form-control" />
-                    <input type="text" id="mapping-ic9-code-input" name="ic9code-input" class="form-control" disabled/>
+                    <input type="text" id="mapping-ic9-code-input" name="ic9codeinput" class="form-control" />
                 </div>
                 <div class="form-group">
                     <label >Ic9 description</label>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                   <label >Ic10am code</label>
                   <input type="hidden" id="mapping-ic10am-code" name="ic10code" class="form-control"/>
-                  <input type="text" id="mapping-ic10am-code-input" name="ic10code-input" class="form-control" disabled/>
+                  <input type="text" id="mapping-ic10am-code-input" name="ic10codeinput" class="form-control" />
               </div>
               <div class="form-group">
                   <label >Ic10am description</label>
@@ -72,7 +72,6 @@
               </div>
               <div class="form-group">
                 <label >Reason</label>
-                {{-- <input type="text" name="reason" class="form-control" placeholder="Please input reason for change" /> --}}
                 <textarea name="reason" id="" rows="5" class="form-control" placeholder="Please input reason for change" id="mapping-reason"  ></textarea>
             </div>
                 <input type="submit" value="Submit Suggestion" class="btn btn-primary btn-block" id="" />
@@ -84,13 +83,13 @@
           Edit Mapping
       </div>
       <div class="card-body">
-          <form  method="POST" action="{{url('/postAmSuggestions')}}">
+          <form class="justify-content-md-center" method="POST" action="{{url('/postAmSuggestions')}}">
               @csrf
               <input type="hidden" id="mapping-id2" name="id" class="form-control"/>
               <div class="form-group">
                   <label >Ic10 code</label>
                   <input type="hidden" id="mapping-ic10-code" name="ic10code" class="form-control" />
-                  <input type="text" id="mapping-ic10-code-input" name="ic10code-input" class="form-control" disabled/>
+                  <input type="text" id="mapping-ic10-code-input" name="ic10codeinput" class="form-control"/>
               </div>
               <div class="form-group">
                   <label >Ic10 description</label>
@@ -100,7 +99,7 @@
               <div class="form-group">
                 <label >Ic10AM code</label>
                 <input type="hidden" id="mapping-ic10am-code2" name="ic10amcode" class="form-control" />
-                <input type="text" id="mapping-ic10am-code2-input" name="ic10amcode-input" class="form-control" disabled/>
+                <input type="text" id="mapping-ic10am-code2-input" name="ic10amcodeinput" class="form-control"/>
             </div>
             <div class="form-group">
                 <label >Ic10AM description</label>

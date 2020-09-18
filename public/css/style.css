@@ -129,9 +129,8 @@ input[type="file"] {
 }
 
 .admin_container {
-    max-width: 1200px;
     position: absolute;
-    left: 18%;
+    left: 10%;
 }
 
 .record_ten_table {
