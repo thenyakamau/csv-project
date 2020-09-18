@@ -294,7 +294,7 @@ document.querySelector("#search_button").addEventListener("click", () => {
     const status = document.querySelector("#category-selector").value;
     if (status === "ICD-10 code" || status === "ICD-10-AM Map") {
         fetchIc10AMRecords(key, status);
-    } else if ("ICD9_Code") {
+    } else if (status === "ICD9_Code") {
         fetchIc9to10Records(key, status);
     } else {
         getRecords(key, status);

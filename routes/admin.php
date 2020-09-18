@@ -28,10 +28,13 @@ Route::middleware(['auth:web', 'admin'])->group(function () {
 
 
     Route::get('/updateRecordTen', 'RecordsTenController@updateRecordTen');
+    Route::get('/updateRecordNine', 'RecordsController@updateRecordNine');
 
     Route::get('/suggestion/{id}', 'SuggestionsController@deleteSuggestion');
     Route::get('/suggestion_ten/{id}', 'SuggestionsController@deleteSuggestionTen');
+    Route::get('/suggestion_nine/{id}', 'SuggestionsController@deleteSuggestionNine');
 
     Route::get('/getSuggestionsExport', 'SuggestionsController@getSuggestionsExport');
     Route::get('/getSuggestionsTenExport', 'SuggestionsController@getSuggestionsTenExport');
+    Route::get('/getSuggestionsNineExport', 'SuggestionsController@getSuggestionsNineExport');
 });

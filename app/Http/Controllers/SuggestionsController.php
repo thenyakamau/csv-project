@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\SuggestionExport;
 use App\Exports\SuggestionTenExport;
+use App\Exports\SuggestNineExport;
 use App\Suggestion;
 use App\SuggestionNine;
 use App\SuggestionTen;
@@ -129,6 +130,16 @@ class SuggestionsController extends Controller
         }
     }
 
+    public function deleteSuggestionNine($id)
+    {
+        $suggestion = SuggestionNine::findOrFail($id);
+        if ($suggestion->delete()) {
+            return redirect()->back()->with(['success' => 'Suggestion has been delete']);
+        } else {
+            return redirect()->back()->with(['message' => 'Something went wrong']);
+        }
+    }
+
     public function getSuggestionsExport()
     {
         return Excel::download(new SuggestionExport, 'suggestions.csv');
@@ -137,5 +148,9 @@ class SuggestionsController extends Controller
     public function getSuggestionsTenExport()
     {
         return Excel::download(new SuggestionTenExport, 'suggestions_ten.csv');
+    }
+    public function getSuggestionsNineExport()
+    {
+        return Excel::download(new SuggestNineExport, 'suggestions_nine.csv');
     }
 }

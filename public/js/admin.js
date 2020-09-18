@@ -1,5 +1,5 @@
 function switchAdminTables(status) {
-    if (status === "ICD-10-mode") {
+    if (status === "ICD-10am-mode") {
         document.querySelector("#suggest-table").style.display = "none";
         document.querySelector("#suggest-nine-table").style.display = "none";
         document.querySelector("#suggest-ten-table").style.display = "block";
