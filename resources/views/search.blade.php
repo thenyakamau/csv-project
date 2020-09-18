@@ -35,16 +35,21 @@
         <div class="card-header records_header">
             <h4>Records</h4>
         </div>
-        <div class="card-body">
-            <table class="table table-striped table-responsive w-100 d-block d-md-table" id = 'record-table'>
+        <div class="card-body" >
+            <div id = 'record-table'>
+              <table class="table table-striped table-responsive w-100 d-block d-md-table" >
                 <thead id="table-ic-head"></thead>
                 <tbody id="record-list"></tbody>
               </table>
-
-              <table class="table table-striped table-responsive record_ten_table w-100 d-block d-md-table" id = 'record-ten-table'>
+            </div>
+             
+            <div id='record-ten-table'>
+              <table class="table table-striped table-responsive record_ten_table w-100 d-block d-md-table" >
                 <thead id="table-ic10-head"></thead>
                 <tbody id="record-ten-list"></tbody>
               </table>
+            </div>
+            
         </div>
     </div>
     </div>

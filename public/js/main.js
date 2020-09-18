@@ -119,12 +119,15 @@ function fetchIc10AMRecords(key, status) {
 }
 
 function createIC10Records(status, input) {
+    document.querySelector("#record-table").style.display = "none";
+    document.querySelector("#record-ten-table").style.display = "block";
     while (ten_list.firstChild) {
         ten_list.firstChild.remove();
     }
     while (ten_head.firstChild) {
         ten_head.firstChild.remove();
     }
+
     if (status === "ICD-10 code") {
         const row = document.createElement("tr");
         row.innerHTML = `   <th>ICD-10</th>
@@ -211,10 +214,9 @@ function loadRecords(input, status) {
         input.forEach(record => {
             displayIC10Record(record);
         });
-    } else if (status === "ICD-10 code" || status === "ICD-10-AM Map") {
+    } else if (status === "ICD-10 code") {
         document.querySelector("#record-table").style.display = "none";
         document.querySelector("#record-ten-table").style.display = "block";
-
         fetchIc10AMRecords(null, status);
     } else if (status === "ICD9_Code") {
         const row = document.createElement("tr");
@@ -292,11 +294,11 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelector("#search_button").addEventListener("click", () => {
     const key = document.querySelector("#search-bar").value;
     const status = document.querySelector("#category-selector").value;
-    if (status === "ICD-10 code" || status === "ICD-10-AM Map") {
+    if (status === "ICD-10 code") {
         fetchIc10AMRecords(key, status);
     } else if (status === "ICD9_Code") {
         fetchIc9to10Records(key, status);
-    } else {
+    } else if (status === "ICD-9-BPA code") {
         getRecords(key, status);
     }
 });
