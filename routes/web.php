@@ -29,6 +29,9 @@ Route::get('/map', function () {
 Route::get('/getRecords', 'RecordsController@getRecords');
 Route::get('/getRecord', 'RecordsController@getRecord');
 Route::get('/fetchIc9to10Records', 'RecordsController@fetchIc9to10Records');
+Route::get('/exportRecords', 'RecordsController@exportRecords');
+Route::get('/exportRecordsNine', 'RecordsController@exportRecordsNine');
+Route::get('/exportRecordsTen', 'RecordsController@exportRecordsTen');
 
 Route::get('/getRecordsTen', 'RecordsTenController@getRecordsTen');
 Route::get('/getRecordTen', 'RecordsTenController@getRecordTen');

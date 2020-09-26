@@ -289,4 +289,28 @@ document.querySelector("#search_button").addEventListener("click", () => {
 document.querySelector("#category-selector").onchange = e => {
     document.querySelector("#record-table").style.display = "none";
     document.querySelector("#record-ten-table").style.display = "none";
+
+    const record_link = document.querySelector("#record_link_download");
+    const record_nine_link = document.querySelector(
+        "#record_nine_link_download"
+    );
+    const record_ten_link = document.querySelector("#record_ten_link_download");
+
+    const status = document.querySelector("#category-selector").value;
+    if (status === "ICD-10 code" || status === "ICD-10-AM Map") {
+        record_link.style.display = "none";
+        record_nine_link.style.display = "none";
+        record_ten_link.style.display = "block";
+    } else if (status === "ICD9_Code" || status === "ICD10_Code") {
+        record_link.style.display = "none";
+        record_nine_link.style.display = "block";
+        record_ten_link.style.display = "none";
+    } else if (
+        status === "ICD-9-BPA code" ||
+        status === "ICD-10-AM 1st edition code map 1"
+    ) {
+        record_link.style.display = "block";
+        record_nine_link.style.display = "none";
+        record_ten_link.style.display = "none";
+    }
 };

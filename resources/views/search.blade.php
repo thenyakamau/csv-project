@@ -36,7 +36,11 @@
 
     <div class="card mt-4">
         <div class="card-header records_header">
-            <h4>Records</h4>
+           
+              <h4>Records</h4>
+              <a href="/exportRecords" class="btn btn-primary" id="record_link_download">Download</a>
+              <a href="/exportRecordsNine" class="btn btn-primary display_none" id="record_nine_link_download">Download</a>
+              <a href="/exportRecordsTen" class="btn btn-primary display_none" id="record_ten_link_download">Download</a>
         </div>
         <div class="card-body" >
             <div id = 'record-table'>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\RecordNineExport;
+use App\Exports\RecordsExport;
+use App\Exports\RecordTenExport;
 use App\FileUpload;
 use App\Imports\RecordNineImport;
 use App\Imports\RecordsImport;
@@ -137,5 +140,20 @@ class RecordsController extends Controller
         }
 
         return redirect()->route('welcome');
+    }
+
+    public function exportRecords()
+    {
+        return Excel::download(new RecordsExport, 'records.csv');
+    }
+
+    public function exportRecordsNine()
+    {
+        return Excel::download(new RecordNineExport, 'records_nine.csv');
+    }
+
+    public function exportRecordsTen()
+    {
+        return Excel::download(new RecordTenExport, 'records_ten.csv');
     }
 }
