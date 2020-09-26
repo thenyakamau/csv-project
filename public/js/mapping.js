@@ -159,9 +159,9 @@ document.querySelector("#search_button_map").addEventListener("click", () => {
     const status = document.querySelector("#category-selector-mapping").value;
 
     if (key) {
-        if (status === "ICD-10 code") {
+        if (status === "ICD-10 code" || status === "ICD-10-AM Map") {
             fetchIc10AMRecord(key, status);
-        } else if (status === "ICD9_Code") {
+        } else if (status === "ICD9_Code" || status === "ICD10_Code") {
             getIc9to10Records(key, status);
         } else {
             getRecord(key, status);

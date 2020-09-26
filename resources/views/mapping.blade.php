@@ -25,13 +25,14 @@
         @endif
       <div class="search_bar">
           <div class="card drop_down" id="drop_down_id">
-           
                 <select class="form-control drop_doAwn_items" id="category-selector-mapping">
-                  <option value="ICD-9-BPA code">ICD-9 -> ICD-10AM</option>
-                  <option value="ICD9_Code">ICD-9 -> ICD-10</option>
-                  <option value="ICD-10 code">ICD-10 -> ICD-10AM</option>
+                    <option value="ICD-9-BPA code">ICD-9 -> ICD-10AM</option>
+                    <option value="ICD-10-AM 1st edition code map 1">ICD-10AM -> ICD-9</option>
+                    <option value="ICD9_Code">ICD-9 -> ICD-10</option>
+                    <option value="ICD10_Code">ICD-10 -> ICD-9</option>
+                    <option value="ICD-10 code">ICD-10 -> ICD-10AM</option>
+                    <option value="ICD-10-AM Map">ICD-10AM -> ICD-10</option>
                 </select>
-            
           </div>
         <input type="text" class="form-group" id='search-bar-map' placeholder="Input code and press search....">
         <div class="card searh_button" id='search_button_map'>
@@ -54,7 +55,7 @@
                 <div class="form-group">
                     <label >Ic9 code</label>
                     <input type="hidden" id="mapping-ic9-code" name="ic9code" class="form-control" />
-                    <input type="text" id="mapping-ic9-code-input" name="ic9codeinput" class="form-control" />
+                    <input type="text" id="mapping-ic9-code-input" name="ic9codeinput" class="form-control" disabled/>
                 </div>
                 <div class="form-group">
                     <label >Ic9 description</label>
@@ -64,7 +65,7 @@
                 <div class="form-group">
                   <label >Ic10am code</label>
                   <input type="hidden" id="mapping-ic10am-code" name="ic10code" class="form-control"/>
-                  <input type="text" id="mapping-ic10am-code-input" name="ic10codeinput" class="form-control" />
+                  <input type="text" id="mapping-ic10am-code-input" name="ic10codeinput" class="form-control" disabled/>
               </div>
               <div class="form-group">
                   <label >Ic10am description</label>
@@ -91,7 +92,7 @@
               <div class="form-group">
                   <label >Ic10 code</label>
                   <input type="hidden" id="mapping-ic10-code" name="ic10code" class="form-control" />
-                  <input type="text" id="mapping-ic10-code-input" name="ic10codeinput" class="form-control"/>
+                  <input type="text" id="mapping-ic10-code-input" name="ic10codeinput" class="form-control" disabled/>
               </div>
               <div class="form-group">
                   <label >Ic10 description</label>
@@ -101,7 +102,7 @@
               <div class="form-group">
                 <label >Ic10AM code</label>
                 <input type="hidden" id="mapping-ic10am-code2" name="ic10amcode" class="form-control" />
-                <input type="text" id="mapping-ic10am-code2-input" name="ic10amcodeinput" class="form-control"/>
+                <input type="text" id="mapping-ic10am-code2-input" name="ic10amcodeinput" class="form-control" disabled/>
             </div>
             <div class="form-group">
                 <label >Ic10AM description</label>
@@ -129,7 +130,7 @@
                 <div class="form-group">
                     <label >Ic9 code</label>
                     <input type="hidden" id="mapping-ic9-code2" name="ic9code" class="form-control" />
-                    <input type="text" id="mapping-ic9-code-input2" name="ic9codeinput" class="form-control" />
+                    <input type="text" id="mapping-ic9-code-input2" name="ic9codeinput" class="form-control" disabled/>
                 </div>
                 <div class="form-group">
                     <label >Ic9 description</label>
@@ -139,7 +140,7 @@
                 <div class="form-group">
                   <label >Ic10 code</label>
                   <input type="hidden" id="mapping-ic10-code2" name="ic10code" class="form-control"/>
-                  <input type="text" id="mapping-ic10-code-input2" name="ic10codeinput" class="form-control" />
+                  <input type="text" id="mapping-ic10-code-input2" name="ic10codeinput" class="form-control" disabled/>
               </div>
               <div class="form-group">
                   <label >Ic10 description</label>

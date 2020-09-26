@@ -42,11 +42,11 @@
                         <li class="nav-item" >
                             <a class="nav-link text-white" href="{{ route('search') }}">{{ __('Search') }}</a>
                         </li>
-                        
-                            <li class="nav-item">
-                                <a class="nav-link text-white"  href="{{ route('map') }}">{{ __('Manual map') }}</a>
-                            </li>
-                        
+                        @auth
+                        <li class="nav-item">
+                            <a class="nav-link text-white"  href="{{ route('map') }}">{{ __('Manual map') }}</a>
+                        </li>
+                        @endauth  
                     </ul> 
 
                     <!-- Right Side Of Navbar -->

@@ -8,8 +8,11 @@
            
                 <select class="form-control drop_down_items" id="category-selector">
                   <option value="ICD-9-BPA code">ICD-9 -> ICD-10AM</option>
+                  <option value="ICD-10-AM 1st edition code map 1">ICD-10AM -> ICD-9</option>
                   <option value="ICD9_Code">ICD-9 -> ICD-10</option>
+                  <option value="ICD10_Code">ICD-10 -> ICD-9</option>
                   <option value="ICD-10 code">ICD-10 -> ICD-10AM</option>
+                  <option value="ICD-10-AM Map">ICD-10AM -> ICD-10</option>
                 </select>
             
           </div>
@@ -37,7 +40,7 @@
         </div>
         <div class="card-body" >
             <div id = 'record-table'>
-              <table class="table table-striped table-responsive w-100 d-block d-md-table" >
+              <table class="table table-striped table-responsive w-100 d-block d-md-table display_none" >
                 <thead id="table-ic-head"></thead>
                 <tbody id="record-list"></tbody>
               </table>

@@ -37,11 +37,9 @@ class SuggestionsController extends Controller
         $suggestion->name = Auth::user()->name;
         $suggestion->record_id = $request->id;
         $suggestion->ic9code = $request->ic9code;
-        $suggestion->ic9codesuggest = $request->ic9codeinput;
         $suggestion->ic9description = $request->ic9description;
         $suggestion->ic9descriptionsuggest = $request->ic9descriptionsuggest;
         $suggestion->ic10code = $request->ic10code;
-        $suggestion->ic10codesuggest = $request->ic10codeinput;
         $suggestion->ic10description = $request->ic10description;
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
         $suggestion->reason = $request->reason;
@@ -65,11 +63,9 @@ class SuggestionsController extends Controller
         $suggestion->name = Auth::user()->name;
         $suggestion->record_id = $request->id;
         $suggestion->ic10amcode = $request->ic10amcode;
-        $suggestion->ic10amcodesuggest = $request->ic10amcodeinput;
         $suggestion->ic10amdescription = $request->ic10amdescription;
         $suggestion->ic10amdescriptionsuggest = $request->ic10amdescriptionsuggest;
         $suggestion->ic10code = $request->ic10code;
-        $suggestion->ic10codesuggest = $request->ic10codeinput;
         $suggestion->ic10description = $request->ic10description;
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
         $suggestion->reason = $request->reason;
@@ -94,11 +90,9 @@ class SuggestionsController extends Controller
         $suggestion->name = Auth::user()->name;
         $suggestion->record_id = $request->id;
         $suggestion->ic9code = $request->ic9code;
-        $suggestion->ic9codesuggest = $request->ic9codeinput;
         $suggestion->ic9description = $request->ic9description;
         $suggestion->ic9descriptionsuggest = $request->ic9descriptionsuggest;
         $suggestion->ic10code = $request->ic10code;
-        $suggestion->ic10codesuggest = $request->ic10codeinput;
         $suggestion->ic10description = $request->ic10description;
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
         $suggestion->reason = $request->reason;

@@ -57,12 +57,12 @@
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Mapping</th>
-                  <th>MappingChange</th>
+                  <th>Ic9 Code</th>
                 <th>Ic9Description</th>
                 <th></th>
                 <th>DescriptionChange</th>
-                <th>Ic10amDescription</th>
+                <th>Ic10AMCode</th>
+                <th>Ic10AMDescription</th>
                 <th></th>
                 <th>DescriptionChange</th>
                 <th>Reason</th>
@@ -74,11 +74,12 @@
                 @foreach($suggestions as $key => $suggestion)
                 <tr>
                    <td>{{$suggestion->name}}</td>
-                   <td class="text-danger">{{$suggestion->ic9code}}->{{$suggestion->ic10code}}</td>
-                   <td class="text-primary">{{$suggestion->ic9codesuggest}}->{{$suggestion->ic10codesuggest}}</td>
+                   <td class="text-danger">{{$suggestion->ic9code}}-></td>
+                   
                    <td class="text-danger">{{$suggestion->ic9description}}</td>
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic9descriptionsuggest}}</td>
+                   <td class="text-primary">{{$suggestion->ic10code}}</td>
                    <td class="text-danger">{{$suggestion->ic10description}}</td>
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic10descriptionsuggest}}</td>
@@ -99,10 +100,10 @@
                 <tr>
                   <th>Name</th>
                   <th>Mapping</th>
-                  <th>MappingChange</th>
                 <th>Ic9Description</th>
                 <th></th>
                 <th>DescriptionChange</th>
+                <th>Ic10Code</th>
                 <th>Ic10Description</th>
                 <th></th>
                 <th>DescriptionChange</th>
@@ -115,11 +116,11 @@
                 @foreach($suggestions10 as $key => $suggestion)
                 <tr>
                    <td>{{$suggestion->name}}</td>
-                   <td class="text-danger">{{$suggestion->ic9code}}->{{$suggestion->ic10code}}</td>
-                   <td class="text-primary">{{$suggestion->ic9codesuggest}}->{{$suggestion->ic10codesuggest}}</td>
+                   <td class="text-danger">{{$suggestion->ic9code}}</td>
                    <td class="text-danger">{{$suggestion->ic9description}}</td>
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic9descriptionsuggest}}</td>
+                   <td class="text-primary">{{$suggestion->ic10code}}</td>
                    <td class="text-danger">{{$suggestion->ic10description}}</td>
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic10descriptionsuggest}}</td>
