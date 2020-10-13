@@ -12,23 +12,28 @@ function getIc9To10AmRecords(key, status) {
         method: "GET",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
-        }
+            "Content-Type": "application/json",
+        },
     })
-        .then(res => res.json())
-        .then(resJson => {
+        .then((res) => res.json())
+        .then((resJson) => {
             let records = resJson.records.data;
-            if (status === "ICD-9-BPA code") {
-                displayIC9To10AmRecord(records);
+            if (records.length > 0) {
+                if (status === "ICD-9-BPA code") {
+                    displayIC9To10AmRecord(records);
+                } else {
+                    displayIC10AMTo9Record(records);
+                }
             } else {
-                displayIC10AMTo9Record(records);
+                window.alert("Record not found");
             }
         })
-        .catch(error => {
+        .catch((error) => {
             const errors = {
                 responseMessage: error.response.data,
-                status: error.response.status
+                status: error.response.status,
             };
+            window.alert("something went wrong");
         });
 }
 
@@ -48,7 +53,7 @@ function displayIC9To10AmRecord(records) {
         <th>ICD-10AM</th>
         <th>Description</th>`;
     head.appendChild(row);
-    records.forEach(record => {
+    records.forEach((record) => {
         const row = document.createElement("tr");
         row.innerHTML = `<td>${record.ic9code}</td>
      <td>${record.ic9description}</td> 
@@ -76,7 +81,7 @@ function displayIC10AMTo9Record(records) {
         <th>ICD-9</th>
         <th>Description</th>`;
     head.appendChild(row);
-    records.forEach(record => {
+    records.forEach((record) => {
         const row = document.createElement("tr");
         row.innerHTML = `
         <td>${record.ic10code}</td>
@@ -96,26 +101,31 @@ function fetchIc9to10Records(key, status) {
         method: "GET",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
-        }
+            "Content-Type": "application/json",
+        },
     })
-        .then(res => res.json())
-        .then(resJson => {
+        .then((res) => res.json())
+        .then((resJson) => {
             while (list.firstChild) {
                 list.firstChild.remove();
             }
             let records = resJson.records.data;
-            if (status === "ICD9_Code") {
-                displayIc9to10Record(records);
+            if (records.length > 0) {
+                if (status === "ICD9_Code") {
+                    displayIc9to10Record(records);
+                } else {
+                    displayIC10ToIC9Record(records);
+                }
             } else {
-                displayIC10ToIC9Record(records);
+                window.alert("Record not found");
             }
         })
-        .catch(error => {
+        .catch((error) => {
             const errors = {
                 responseMessage: error.response.data,
-                status: error.response.status
+                status: error.response.status,
             };
+            window.alert("something went wrong");
         });
 }
 
@@ -135,7 +145,7 @@ function displayIc9to10Record(records) {
         <th>ICD-10</th>
         <th>Description</th>`;
     head.appendChild(row);
-    records.forEach(record => {
+    records.forEach((record) => {
         const row = document.createElement("tr");
         row.innerHTML = `<td>${record.ICD9_Code}</td>
          <td>${record.ICD9_Description}</td> 
@@ -163,7 +173,7 @@ function displayIC10ToIC9Record(records) {
         <th>ICD-9</th>
         <th>Description</th>`;
     head.appendChild(row);
-    records.forEach(record => {
+    records.forEach((record) => {
         const row = document.createElement("tr");
         row.innerHTML = `
         <td>${record.ICD10_Code}</td>
@@ -183,19 +193,24 @@ function fetchIc10AMRecords(key, status) {
         method: "GET",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
-        }
+            "Content-Type": "application/json",
+        },
     })
-        .then(res => res.json())
-        .then(resJson => {
+        .then((res) => res.json())
+        .then((resJson) => {
             let response = resJson.records.data;
-            createIC10Records(status, response);
+            if (response.length > 0) {
+                createIC10Records(status, response);
+            } else {
+                window.alert("Record not found");
+            }
         })
-        .catch(error => {
+        .catch((error) => {
             const errors = {
                 responseMessage: error.response.data,
-                status: error.response.status
+                status: error.response.status,
             };
+            window.alert("something went wrong");
         });
 }
 
@@ -217,7 +232,7 @@ function createIC10Records(status, input) {
         <th>ICD-10AM</th>
         <th>Description</th>`;
         ten_head.appendChild(row);
-        input.forEach(record => {
+        input.forEach((record) => {
             displayICD10Record(record);
         });
     } else {
@@ -228,7 +243,7 @@ function createIC10Records(status, input) {
         <th>ICD-10</th>
         <th>Description</th>`;
         ten_head.appendChild(row);
-        input.forEach(record => {
+        input.forEach((record) => {
             displayICD10AMRecord(record);
         });
     }
@@ -286,7 +301,7 @@ document.querySelector("#search_button").addEventListener("click", () => {
     }
 });
 
-document.querySelector("#category-selector").onchange = e => {
+document.querySelector("#category-selector").onchange = (e) => {
     document.querySelector("#record-table").style.display = "none";
     document.querySelector("#record-ten-table").style.display = "none";
 

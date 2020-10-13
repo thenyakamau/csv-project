@@ -74,8 +74,7 @@
                 @foreach($suggestions as $key => $suggestion)
                 <tr>
                    <td>{{$suggestion->name}}</td>
-                   <td class="text-danger">{{$suggestion->ic9code}}-></td>
-                   
+                   <td class="text-danger">{{$suggestion->ic9code}}</td>
                    <td class="text-danger">{{$suggestion->ic9description}}</td>
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic9descriptionsuggest}}</td>
@@ -83,9 +82,12 @@
                    <td class="text-danger">{{$suggestion->ic10description}}</td>
                    <td><i class="fas fa-arrow-right text-primary"></i></td> 
                    <td class="text-primary">{{$suggestion->ic10descriptionsuggest}}</td>
-                   <td class="text-primary">{{$suggestion->reason}}</td>
-                <td><a href="/admin/updateRecord?id={{$suggestion->id}}&ic9codesuggest={{$suggestion->ic9codesuggest}}&ic10codesuggest={{$suggestion->ic10codesuggest}}&ic9descriptionsuggest={{$suggestion->ic9descriptionsuggest}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&record_id={{$suggestion->record_id}}"
+                   <td>{{$suggestion->reason}}</td>
+                   <td class="display_none">{{$suggestion->id}}</td>
+                <td class="row justify-content-sm-around">
+                  <a href="/admin/updateRecord?id={{$suggestion->id}}&ic9codesuggest={{$suggestion->ic9codesuggest}}&ic10codesuggest={{$suggestion->ic10codesuggest}}&ic9descriptionsuggest={{$suggestion->ic9descriptionsuggest}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&record_id={{$suggestion->record_id}}"
                    class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-check edit"></i></a> 
+                   {{-- <div class="btn btn-success btn-sm m-1 edit"  id="btn_edit_ic9"><i class="fas fa-check edit" ></i></div> --}}
                    <a href="/admin/suggestion/{{$suggestion->id}}" class = "btn btn-danger btn-sm m-1 delete"><i class="fas fa-times"></i></a>
                   </td>
                 </tr>
@@ -127,6 +129,7 @@
                    <td class="text-primary">{{$suggestion->reason}}</td>
                 <td><a href="/admin/updateRecordNine?id={{$suggestion->id}}&ic9codesuggest={{$suggestion->ic9codesuggest}}&ic10codesuggest={{$suggestion->ic10codesuggest}}&ic9descriptionsuggest={{$suggestion->ic9descriptionsuggest}}&ic10descriptionsuggest={{$suggestion->ic10descriptionsuggest}}&record_id={{$suggestion->record_id}}"
                    class = "btn btn-success btn-sm m-1 edit" ><i class="fas fa-check edit"></i></a> 
+                   {{-- <div class="btn btn-success btn-sm m-1 edit"  id="btn_edit_ic10"><i class="fas fa-check edit" ></i></div> --}}
                    <a href="/admin/suggestion_nine/{{$suggestion->id}}" class = "btn btn-danger btn-sm m-1 delete"><i class="fas fa-times"></i></a>
                   </td>
                 </tr>
@@ -176,6 +179,22 @@
               </table>
             </div>
       </div>
+  </div>
+</div>
+<div id="_simpleModal" class="_modal">
+  <div class="col-md-4 modal_content">
+    <span id="_closeModalBtn" class="close_btn">&times;</span>
+    <div class="modal-header">
+      <center>
+        <h3>Warning</h3>
+      </center>
+    </div>
+    <div class="modal-body">
+      <label id="_modal_text"></label>
+      <div class="row justify-content-end">
+        <buttton class="btn btn-primary">Submit</buttton>
+      </div>
+    </div>
   </div>
 </div>
 </div>
