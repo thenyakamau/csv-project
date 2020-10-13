@@ -1,0 +1,8 @@
+.nav_layout {
+    background-color: #006064;
+}
+
+.nav_layout a {
+    font-size: 16px;
+    font-weight: bold;
+}
