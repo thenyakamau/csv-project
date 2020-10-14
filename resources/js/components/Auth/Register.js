@@ -1,6 +1,8 @@
 import Axios from "axios";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { saveAuthUser, getAuthToken } from "../util/FetchAuthenticateduser";
+import TokenConfig from "../util/TokenConfig";
 import CustomAlertBar from "../widgets/CustomAlertBar";
 import SimpleBackdrop from "../widgets/SimpleBackDrop";
 import "./Auth.css";
@@ -18,11 +20,17 @@ export default class Register extends Component {
             openDialog: false,
             remember_me: true,
             isError: null,
-            responseMessage: ""
+            responseMessage: "",
+            auth_token: null
         };
         this.onChange = this.onChange.bind(this);
         this.setResponse = this.setResponse.bind(this);
         this.register = this.register.bind(this);
+    }
+
+    componentDidMount() {
+        const auth_token = getAuthToken();
+        this.setState({ auth_token: auth_token });
     }
 
     onChange(e) {
@@ -49,20 +57,25 @@ export default class Register extends Component {
     register() {
         const { name, email, password, password_confirmation } = this.state;
         this.setState({ isError: null, responseMessage: "" });
-        let config = {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            }
-        };
+        let config = TokenConfig();
         if (name && email && password && password_confirmation) {
             this.setState({ loading: true });
-            Axios.post("", { username, password }, config)
-                .then(res => {})
+            Axios.post(
+                "api/register",
+                { name, email, password, password_confirmation },
+                config
+            )
+                .then(res => {
+                    this.setState({ loading: false });
+                    saveAuthUser(res.data.user, res.data.token);
+                    window.location.reload();
+                })
                 .catch(error => {
+                    this.setState({ loading: false });
                     const errors = {
                         responseMessage: error.response.data,
-                        status: error.response.status
+                        status: error.response.status,
+                        isError: true
                     };
                     if (errors.status === 401) {
                         let responseMessage = {
@@ -95,8 +108,13 @@ export default class Register extends Component {
             name,
             password_confirmation,
             isError,
-            responseMessage
+            responseMessage,
+            auth_token
         } = this.state;
+
+        if (auth_token != null) {
+            return <Redirect to="/" />;
+        }
         return (
             <div className="login_layout">
                 <SimpleBackdrop open={loading} />
@@ -125,7 +143,7 @@ export default class Register extends Component {
                                         className="input @error('username') is-invalid @enderror"
                                         name="name"
                                         value={name}
-                                        onChange={this.onChange}
+                                        onChange={e => this.onChange(e)}
                                         required
                                         autoComplete="name"
                                         autoFocus
@@ -145,7 +163,7 @@ export default class Register extends Component {
                                         className="input @error('username') is-invalid @enderror"
                                         name="email"
                                         value={email}
-                                        onChange={this.onChange}
+                                        onChange={e => this.onChange(e)}
                                         required
                                         autoComplete="name"
                                         autoFocus
@@ -165,7 +183,7 @@ export default class Register extends Component {
                                         className="input @error('password') is-invalid @enderror"
                                         value={password}
                                         name="password"
-                                        onChange={this.onChange}
+                                        onChange={e => this.onChange(e)}
                                         required
                                         autoComplete="new-password"
                                     />
@@ -183,8 +201,8 @@ export default class Register extends Component {
                                         type="password"
                                         className="input @error('password') is-invalid @enderror"
                                         value={password_confirmation}
-                                        name="password"
-                                        onChange={this.onChange}
+                                        name="password_confirmation"
+                                        onChange={e => this.onChange(e)}
                                         required
                                         autoComplete="new-password"
                                     />
@@ -196,7 +214,7 @@ export default class Register extends Component {
                                 type="submit"
                                 className="btn_login"
                                 value="register"
-                                onClick={this.register}
+                                onClick={() => this.register()}
                             />
                             <br />
                             <div className="forgot_container">

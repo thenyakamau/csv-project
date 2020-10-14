@@ -16,9 +16,9 @@ class CreateRecordNinesTable extends Migration
         Schema::create('record_nines', function (Blueprint $table) {
             $table->id();
             $table->string('ICD9_Code');
-            $table->string('ICD9_Description');
+            $table->longText('ICD9_Description');
             $table->string('ICD10_Code')->nullable();
-            $table->string('ICD10_Descriptiom')->nullable();
+            $table->longText('ICD10_Descriptiom')->nullable();
             $table->timestamps();
         });
     }

@@ -11,7 +11,21 @@ export function getRefreshToken() {
 }
 
 export function getAuthenticatedUser() {
-    let auth_user = localStorage.getItem("auth_user");
+    let name = localStorage.getItem("user");
+    let type = localStorage.getItem("user_type");
+    return { name, type };
+}
 
-    return auth_user;
+export function saveAuthUser(user, token) {
+    localStorage.setItem("access_token", token.access_token);
+    localStorage.setItem("refresh_token", token.refresh_token);
+    localStorage.setItem("user_type", user.type);
+    localStorage.setItem("user", user.name);
+}
+
+export function deleteAuthUser() {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("user_type");
+    localStorage.removeItem("user");
 }

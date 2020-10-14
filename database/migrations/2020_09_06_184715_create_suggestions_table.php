@@ -16,11 +16,11 @@ class CreateSuggestionsTable extends Migration
         Schema::create('suggestions', function (Blueprint $table) {
             $table->id();
             $table->string('ic9code');
-            $table->string('ic9description');
-            $table->string('ic9descriptionsuggest')->nullable();
+            $table->longText('ic9description');
+            $table->longText('ic9descriptionsuggest')->nullable();
             $table->string('ic10code');
-            $table->string('ic10description');
-            $table->string('ic10descriptionsuggest')->nullable();
+            $table->longText('ic10description');
+            $table->longText('ic10descriptionsuggest')->nullable();
             $table->string('name');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('record_id');

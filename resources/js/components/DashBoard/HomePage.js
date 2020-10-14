@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class HomePage extends Component {
     render() {
@@ -11,7 +12,7 @@ export default class HomePage extends Component {
 
                     <p>
                         Clinical classifaction systems such as ICD(International
-                        Classifaction of Diseases)developed by WHO, have been
+                        Classifaction of Diseases) developed by WHO, have been
                         used for many years to code clinical data for various
                         statistical analysis purposes. This coded data is used
                         not only nationally but also internationally to compare
@@ -30,12 +31,12 @@ export default class HomePage extends Component {
                         version
                     </p>
                     <center>
-                        <a
-                            href="/search"
+                        <Link
+                            to="/search"
                             className="btn btn-primary btn-lg link_button"
                         >
                             <i className="fas fa-search"></i> Search
-                        </a>
+                        </Link>
                     </center>
                 </div>
             </div>

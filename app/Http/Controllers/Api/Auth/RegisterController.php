@@ -32,7 +32,8 @@ class RegisterController extends Controller
 
         $user = new User();
         $user->name = $request->name;
-        $request->email = $request->email;
+        $user->email = $request->email;
+        $user->type = 'user';
         $user->password = Hash::make($request->password);
         if ($user->save()) {
             $issueToken = json_decode($this->issueToken($request, 'password')->getContent());

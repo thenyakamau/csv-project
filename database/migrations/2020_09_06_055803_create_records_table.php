@@ -16,10 +16,10 @@ class CreateRecordsTable extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->string('ICD-9-BPA code');
-            $table->string('ICD-9-BPA code description');
+            $table->longText('ICD-9-BPA code description');
             $table->string('Valid ICD-9-BPA code')->nullable();
-            $table->string('ICD-10-AM 1st edition code map 1')->nullable();
-            $table->string('ICD-10-AM code description map 1')->nullable();
+            $table->longText('ICD-10-AM 1st edition code map 1')->nullable();
+            $table->longText('ICD-10-AM code description map 1')->nullable();
             $table->timestamps();
         });
     }

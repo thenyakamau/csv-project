@@ -139,7 +139,7 @@ class RecordsController extends Controller
             Excel::import(new RecordNineImport, $fileUpload3->file_name);
         }
 
-        return redirect()->route('welcome');
+        return response()->json(['message' => 'Files uploaded']);
     }
 
     public function exportRecords()

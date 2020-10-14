@@ -36,6 +36,8 @@
 <link href="{{asset('css/all.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto+Slab:wght@500&family=Russo+One&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div id="client"></div>

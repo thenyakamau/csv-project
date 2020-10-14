@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware(['auth:web', 'admin'])->group(function () {
+Route::middleware(['auth:api', 'admin'])->group(function () {
 
     Route::get('/upload', function () {
         return view('upload');

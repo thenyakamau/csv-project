@@ -3,7 +3,9 @@ import React, { Component } from "react";
 import CustomAlertBar from "../widgets/CustomAlertBar";
 import SimpleBackdrop from "../widgets/SimpleBackDrop";
 import "./Auth.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { saveAuthUser, getAuthToken } from "../util/FetchAuthenticateduser";
+import TokenConfig from "../util/TokenConfig";
 
 export default class Login extends Component {
     constructor(props) {
@@ -16,11 +18,17 @@ export default class Login extends Component {
             openDialog: false,
             remember_me: true,
             isError: null,
-            responseMessage: ""
+            responseMessage: "",
+            auth_token: null
         };
         this.onChange = this.onChange.bind(this);
         this.setResponse = this.setResponse.bind(this);
         this.login = this.login.bind(this);
+    }
+
+    componentDidMount() {
+        const auth_token = getAuthToken();
+        this.setState({ auth_token: auth_token });
     }
 
     onChange(e) {
@@ -47,20 +55,21 @@ export default class Login extends Component {
     login() {
         const { username, password } = this.state;
         this.setState({ isError: null, responseMessage: "" });
-        let config = {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            }
-        };
+        let config = TokenConfig();
         if (username && password) {
             this.setState({ loading: true });
-            Axios.post("", { username, password }, config)
-                .then(res => {})
+            Axios.post("api/login", { username, password }, config)
+                .then(res => {
+                    this.setState({ loading: false });
+                    saveAuthUser(res.data.user, res.data.token);
+                    window.location.reload();
+                })
                 .catch(error => {
+                    this.setState({ loading: false });
                     const errors = {
                         responseMessage: error.response.data,
-                        status: error.response.status
+                        status: error.response.status,
+                        isError: true
                     };
                     if (errors.status === 401) {
                         let responseMessage = {
@@ -91,8 +100,14 @@ export default class Login extends Component {
             responseMessage,
             isError,
             username,
-            password
+            password,
+            auth_token
         } = this.state;
+
+        if (auth_token != null) {
+            return <Redirect to="/" />;
+        }
+
         return (
             <div className="login_layout">
                 <SimpleBackdrop open={loading} />
@@ -120,7 +135,7 @@ export default class Login extends Component {
                                         className="input @error('username') is-invalid @enderror"
                                         name="username"
                                         value={username}
-                                        onChange={this.onChange}
+                                        onChange={e => this.onChange(e)}
                                         required
                                         autoComplete="name"
                                         autoFocus
@@ -140,7 +155,7 @@ export default class Login extends Component {
                                         className="input @error('password') is-invalid @enderror"
                                         value={password}
                                         name="password"
-                                        onChange={this.onChange}
+                                        onChange={e => this.onChange(e)}
                                         required
                                         autoComplete="new-password"
                                     />
@@ -152,7 +167,7 @@ export default class Login extends Component {
                                 type="submit"
                                 className="btn_login"
                                 value="login"
-                                onClick={this.login}
+                                onClick={() => this.login()}
                             />
                             <br />
                             <div className="forgot_container">

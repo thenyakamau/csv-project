@@ -1,17 +1,19 @@
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import SimpleBackdrop from "../widgets/SimpleBackDrop";
-import { getAuthToken } from "./FetchAuthenticateduser";
+import { getAuthenticatedUser, getAuthToken } from "./FetchAuthenticateduser";
 
 const userAuthenticated = () => {
     const auth_token = getAuthToken;
-    if (auth_token != null) {
+    const auth_user = getAuthenticatedUser;
+    if (auth_token != null && auth_user.type === "admin") {
         return true;
     } else {
         return false;
     }
 };
 
-const PrivateRoutes = ({ component: Component, auth, ...rest }) => {
+export default function PrivateRoutes({ component: Component, auth, ...rest }) {
     return (
         <Route
             {...rest}
@@ -21,4 +23,4 @@ const PrivateRoutes = ({ component: Component, auth, ...rest }) => {
             }}
         />
     );
-};
+}

@@ -16,9 +16,9 @@ class CreateRecordsTensTable extends Migration
         Schema::create('records_tens', function (Blueprint $table) {
             $table->id();
             $table->string('ICD-10 code');
-            $table->string('ICD-10 code descriptor');
+            $table->longText('ICD-10 code descriptor');
             $table->string('ICD-10-AM Map')->nullable();
-            $table->string('ICD-10-AM code descriptor')->nullable();
+            $table->longText('ICD-10-AM code descriptor')->nullable();
             $table->timestamps();
         });
     }

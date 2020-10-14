@@ -1,3 +1,27 @@
+body * {
+    transition: 0.8s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+    font-family: "Russo One", sans-serif;
+    font-weight: 500;
+}
+
+p,
+li,
+span,
+label,
+input,
+textarea {
+    font-family: "Roboto Mono", monospace;
+}
+
 input[type="text"],
 input[type="number"],
 input[type="file"] {
@@ -7,6 +31,7 @@ input[type="file"] {
     font-size: 16px;
     padding: 10px;
     width: 100%;
+    font-family: "Roboto Mono", monospace;
 }
 
 .welcome_layout {
@@ -23,71 +48,6 @@ input[type="file"] {
 
 .nav_form_btn {
     margin-left: 20px;
-}
-
-.search_bar {
-    display: flex;
-}
-
-.search_bar label {
-    font-size: 16px;
-}
-
-.search_bar input {
-    width: 300px;
-}
-
-.drop_down {
-    height: 45px;
-    width: 200px;
-    font-size: 20px;
-    font-weight: 600;
-    align-items: center;
-    justify-content: center;
-    width: 250px;
-    cursor: pointer;
-}
-
-.drop_down_items {
-    display: flex;
-    justify-content: space-around;
-    width: 200px;
-    height: 45px;
-}
-
-.searh_button {
-    width: 100px;
-    height: 48px;
-    font-size: 20px;
-    font-weight: 600;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    cursor: pointer;
-    background-color: #3949ab;
-    color: white;
-}
-
-.search_button_items {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.card_display {
-    width: 100%;
-    justify-content: center;
-}
-
-.records_header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.display_none {
-    display: none;
 }
 
 ._modal {
