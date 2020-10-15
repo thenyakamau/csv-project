@@ -192,18 +192,12 @@ export default class NavBar extends Component {
                             {authUser != null && authUser.type === "admin" ? (
                                 <ul className="navbar-nav ml-auto">
                                     <li>
-                                        <form
-                                            className="nav_form_btn"
-                                            action="/"
-                                            method="GET"
+                                        <Link
+                                            to="/admin/"
+                                            className="btn btn-primary"
                                         >
-                                            <button
-                                                type="submit"
-                                                className="btn btn-primary"
-                                            >
-                                                Admin Portal
-                                            </button>
-                                        </form>
+                                            Admin Portal
+                                        </Link>
                                     </li>
                                 </ul>
                             ) : (

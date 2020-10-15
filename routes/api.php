@@ -20,4 +20,8 @@ Route::post('refresh', 'Api\Auth\LoginController@refresh');
 
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'Api\Auth\LoginController@logout');
+
+    Route::post('/postSuggestions', 'SuggestionsController@postSuggestions');
+    Route::post('/postAmSuggestions', 'SuggestionsController@postAmSuggestions');
+    Route::post('/post10Suggestion', 'SuggestionsController@post10Suggestion');
 });

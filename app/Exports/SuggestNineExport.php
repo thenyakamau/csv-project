@@ -18,6 +18,6 @@ class SuggestNineExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ["id", "ICD-10 code",  "ICD-9 code descriptor", "ICD-9 code descriptor Suggestion", "ICD-10 Code", "ICD-10 descriptor", "ICD-10 descriptor suggestion", "suggester Name", "suggester id", "Record Id", "Reason why", "Created at", "Updated at"];
+        return ["id", "ICD-9 code", "ICD-9 code Suggest",  "ICD-9 code descriptor", "ICD-9 code descriptor Suggestion", "ICD-10 Code", "ICD-10 Code Suggest", "ICD-10 descriptor", "ICD-10 descriptor suggestion", "suggester Name", "suggester id", "Record Id", "Reason why", "Created at", "Updated at"];
     }
 }

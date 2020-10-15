@@ -71,20 +71,20 @@ class RecordsController extends Controller
         $record = Records::findOrFail($request->record_id);
         $suggestion = Suggestion::findOrFail($request->id);
         if (isset($request->ic9descriptionsuggest)) {
-            $record->{'ICD-9-BPA code'} = $request->ic9codesuggest;
+            $record->{'ICD-9-BPA code'} = $request->ic9codeinput;
             $record->{'ICD-9-BPA code description'} = $request->ic9descriptionsuggest;
         }
 
         if (isset($request->ic10descriptionsuggest)) {
-            $record->{'ICD-10-AM 1st edition code map 1'} = $request->ic10codesuggest;
+            $record->{'ICD-10-AM 1st edition code map 1'} = $request->ic10codeinput;
             $record->{'ICD-10-AM code description map 1'} = $request->ic10descriptionsuggest;
         }
 
         $record->save();
         if ($suggestion->delete()) {
-            return redirect()->back()->with(['success' => 'Record has been updated']);
+            return response()->json(['message' => 'Record has been updated']);
         } else {
-            return redirect()->back()->with(['message' => 'Something went wrong']);
+            return response()->json(['message' => 'Something went wrong'], 500);
         }
     }
 
@@ -94,20 +94,20 @@ class RecordsController extends Controller
         $suggestion = SuggestionNine::findOrFail($request->id);
 
         if (isset($request->ic9descriptionsuggest)) {
-            $record->{'ICD9_Code'} = $request->ic9codesuggest;
+            $record->{'ICD9_Code'} = $request->ic9codeinput;
             $record->{'ICD9_Description'} = $request->ic9descriptionsuggest;
         }
 
         if (isset($request->ic10descriptionsuggest)) {
-            $record->{'ICD10_Code'} = $request->ic10codesuggest;
+            $record->{'ICD10_Code'} = $request->ic10codeinput;
             $record->{'ICD10_Descriptiom'} = $request->ic10descriptionsuggest;
         }
 
         $record->save();
         if ($suggestion->delete()) {
-            return redirect()->back()->with(['success' => 'Record has been updated']);
+            return response()->json(['message' => 'Record has been updated']);
         } else {
-            return redirect()->back()->with(['message' => 'Something went wrong']);
+            return response()->json(['message' => 'Something went wrong'], 500);
         }
     }
 

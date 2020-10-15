@@ -16,9 +16,11 @@ class CreateSuggestionNinesTable extends Migration
         Schema::create('suggestion_nines', function (Blueprint $table) {
             $table->id();
             $table->string('ic9code');
+            $table->string('ic9codeinput')->nullable();
             $table->longText('ic9description');
             $table->longText('ic9descriptionsuggest')->nullable();
             $table->string('ic10code');
+            $table->string('ic10codeinput')->nullable();
             $table->longText('ic10description');
             $table->longText('ic10descriptionsuggest')->nullable();
             $table->string('name');

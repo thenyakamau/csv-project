@@ -14,27 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/getSuggestionsExport', 'SuggestionsController@getSuggestionsExport');
+Route::get('/getSuggestionsTenExport', 'SuggestionsController@getSuggestionsTenExport');
+Route::get('/getSuggestionsNineExport', 'SuggestionsController@getSuggestionsNineExport');
 Route::middleware(['auth:api', 'admin'])->group(function () {
 
     Route::get('/upload', function () {
         return view('upload');
     });
-    Route::get('/', 'SuggestionsController@getSuggestions');
-    Route::get('/updateRecord', 'RecordsController@updateRecord');
+    Route::get('/suggestion', 'SuggestionsController@getSuggestions');
+    Route::get('/suggestion_nine', 'SuggestionsController@getSuggestionsNine');
+    Route::get('/suggestion_ten', 'SuggestionsController@getSuggestionsTen');
+
 
     Route::post('/postRecord', 'RecordsController@postRecord');
     Route::post('/import', 'RecordsController@importExcel');
 
+    Route::post('/updateRecord', 'RecordsController@updateRecord');
+    Route::post('/updateRecordTen', 'RecordsTenController@updateRecordTen');
+    Route::post('/updateRecordNine', 'RecordsController@updateRecordNine');
 
-    Route::get('/updateRecordTen', 'RecordsTenController@updateRecordTen');
-    Route::get('/updateRecordNine', 'RecordsController@updateRecordNine');
-
-    Route::get('/suggestion/{id}', 'SuggestionsController@deleteSuggestion');
-    Route::get('/suggestion_ten/{id}', 'SuggestionsController@deleteSuggestionTen');
-    Route::get('/suggestion_nine/{id}', 'SuggestionsController@deleteSuggestionNine');
-
-    Route::get('/getSuggestionsExport', 'SuggestionsController@getSuggestionsExport');
-    Route::get('/getSuggestionsTenExport', 'SuggestionsController@getSuggestionsTenExport');
-    Route::get('/getSuggestionsNineExport', 'SuggestionsController@getSuggestionsNineExport');
+    Route::post('/delete_suggestion', 'SuggestionsController@deleteSuggestion');
+    Route::post('/delete_suggestion_ten', 'SuggestionsController@deleteSuggestionTen');
+    Route::post('/delete_suggestion_nine', 'SuggestionsController@deleteSuggestionNine');
 });
