@@ -55,10 +55,10 @@ export default class AdminHome extends Component {
         this.getSuggestions(1);
     }
 
-    getSuggestions(page) {
+    getSuggestions(page, sort, order, criteria) {
         let config = TokenConfig();
         this.setState({ loading: true });
-        Axios.get(`admin/suggestion?page=${page}`, config)
+        Axios.get(`admin/suggestion?page=${page}&sort=`, config)
             .then(res => {
                 this.setState({
                     suggestions: res.data.suggestion.data,

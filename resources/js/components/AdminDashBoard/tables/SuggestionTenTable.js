@@ -50,21 +50,55 @@ export default function SuggestionTenTable(props) {
         setReviseSuggestion(suggestion);
     };
 
+    const getMDate = currentDate => {
+        var mydate = new Date(currentDate);
+        var month = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ][mydate.getMonth()];
+        var str = mydate.getDate() + " " + month + " " + mydate.getFullYear();
+
+        return str;
+    };
+
     return (
         <div>
             <table class="table table-striped table-responsive w-100 d-block d-md-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Mapping</th>
-                        <th>Mapping Change</th>
-                        <th>Ic10Description</th>
+                        <th>
+                            Name <i class="fas fa-caret-down"></i>
+                        </th>
+                        <th>
+                            Mapping <i class="fas fa-caret-down"></i>{" "}
+                        </th>
+                        <th>
+                            Mapping Change <i class="fas fa-caret-down"></i>
+                        </th>
+                        <th>
+                            Ic10Description <i class="fas fa-caret-down"></i>
+                        </th>
                         <th></th>
                         <th>DescriptionChange</th>
-                        <th>Ic10AMDescription</th>
+                        <th>
+                            Ic10AMDescription <i class="fas fa-caret-down"></i>
+                        </th>
                         <th></th>
                         <th>DescriptionChange</th>
                         <th>Reason</th>
+                        <th>
+                            Created Date <i class="fas fa-caret-down"></i>
+                        </th>
                         <th>Accept/Reject</th>
                     </tr>
                 </thead>
@@ -102,6 +136,8 @@ export default function SuggestionTenTable(props) {
                                     {suggestion.ic10amdescriptionsuggest}
                                 </td>
                                 <td>{suggestion.reason}</td>
+
+                                <td>{getMDate(suggestion.created_at)}</td>
 
                                 <td class="row justify-content-sm-around">
                                     <div
