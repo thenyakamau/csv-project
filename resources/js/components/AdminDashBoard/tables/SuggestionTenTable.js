@@ -71,32 +71,37 @@ export default function SuggestionTenTable(props) {
         return str;
     };
 
+    function handleSort(sort) {
+        getSuggestions(1, sort, "desc");
+    }
+
     return (
         <div>
             <table class="table table-striped table-responsive w-100 d-block d-md-table">
                 <thead>
                     <tr>
-                        <th>
+                        <th onClick={() => handleSort(name)}>
                             Name <i class="fas fa-caret-down"></i>
                         </th>
-                        <th>
+                        <th onClick={() => handleSort(ic10amcode)}>
                             Mapping <i class="fas fa-caret-down"></i>{" "}
                         </th>
-                        <th>
+                        <th onClick={() => handleSort(ic10code)}>
                             Mapping Change <i class="fas fa-caret-down"></i>
                         </th>
-                        <th>
+                        <th onClick={() => handleSort(ic10description)}>
                             Ic10Description <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>
-                        <th>
+                        <th onClick={() => handleSort(Ic10AMDescription)}>
                             Ic10AMDescription <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>
+                        <th>Vote</th>
                         <th>Reason</th>
-                        <th>
+                        <th onClick={() => handleSort(created_at)}>
                             Created Date <i class="fas fa-caret-down"></i>
                         </th>
                         <th>Accept/Reject</th>
@@ -135,6 +140,7 @@ export default function SuggestionTenTable(props) {
                                 <td class="text-primary">
                                     {suggestion.ic10amdescriptionsuggest}
                                 </td>
+                                <td>{suggestion.vote}</td>
                                 <td>{suggestion.reason}</td>
 
                                 <td>{getMDate(suggestion.created_at)}</td>

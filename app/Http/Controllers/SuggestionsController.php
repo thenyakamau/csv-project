@@ -10,27 +10,32 @@ use App\SuggestionNine;
 use App\SuggestionTen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SuggestionsController extends Controller
 {
 
-    public function getSuggestions()
+    public function getSuggestions(Request $request)
     {
-        $suggestions = Suggestion::paginate(10);
+        // $suggestions = Suggestion::paginate(10);
+
+        $suggestions = DB::table('suggestions')->orderBy($request->sort, 'desc')->paginate(10);
 
         return response()->json(['suggestion' => $suggestions]);
     }
 
-    public function getSuggestionsNine()
+    public function getSuggestionsNine(Request $request)
     {
-        $suggestions = SuggestionNine::paginate(10);
+        // $suggestions = SuggestionNine::paginate(10);
+        $suggestions = DB::table('suggestions')->orderBy($request->sort, 'desc')->paginate(10);
         return response()->json(['suggestion' => $suggestions]);
     }
 
-    public function getSuggestionsTen()
+    public function getSuggestionsTen(Request $request)
     {
-        $suggestions = SuggestionTen::paginate(10);
+        // $suggestions = SuggestionTen::paginate(10);
+        $suggestions = DB::table('suggestions')->orderBy($request->sort, 'desc')->paginate(10);
         return response()->json(['suggestion' => $suggestions]);
     }
 

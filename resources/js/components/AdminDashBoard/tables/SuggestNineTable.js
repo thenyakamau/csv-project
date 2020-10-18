@@ -50,6 +50,10 @@ export default function SuggestNineTable(props) {
         setReviseSuggestion(suggestion);
     };
 
+    function handleSort(sort) {
+        getSuggestions(1, sort, "desc");
+    }
+
     const getMDate = currentDate => {
         var mydate = new Date(currentDate);
         var month = [
@@ -76,28 +80,29 @@ export default function SuggestNineTable(props) {
             <table class="table table-striped table-responsive w-100 d-block d-md-table">
                 <thead>
                     <tr>
-                        <th>
+                        <th onClick={() => handleSort(name)}>
                             Name <i class="fas fa-caret-down"></i>
                         </th>
-                        <th>
+                        <th onClick={() => handleSort(ic9code)}>
                             Mapping <i class="fas fa-caret-down"></i>
                         </th>
-                        <th>
+                        <th onClick={() => handleSort(ic10codeinput)}>
                             Mapping Change <i class="fas fa-caret-down"></i>
                         </th>
-                        <th>
+                        <th onClick={() => handleSort(ic9description)}>
                             Ic9Description <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>
 
-                        <th>
+                        <th onClick={() => handleSort(ic10description)}>
                             Ic10AMDescription <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>
+                        <th>Vote</th>
                         <th>Reason</th>
-                        <th>
+                        <th onClick={() => handleSort(created_at)}>
                             Created Date <i class="fas fa-caret-down"></i>
                         </th>
                         <th>Accept/Reject</th>
@@ -135,6 +140,7 @@ export default function SuggestNineTable(props) {
                                 <td class="text-primary">
                                     {suggestion.ic10descriptionsuggest}
                                 </td>
+                                <td>{suggestion.vote}</td>
                                 <td>{suggestion.reason}</td>
 
                                 <td>{getMDate(suggestion.created_at)}</td>

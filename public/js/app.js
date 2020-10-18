@@ -92350,11 +92350,11 @@ var AdminHome = /*#__PURE__*/function (_Component) {
       });
 
       if (currentTable === "ICD-9-mode") {
-        this.getSuggestions(1);
+        this.getSuggestions(1, "id", "desc");
       } else if (currentTable === "ICD-10-mode") {
-        this.getNineSuggestions(1);
+        this.getNineSuggestions(1, "id", "desc");
       } else {
-        this.getTenSuggestions(1);
+        this.getTenSuggestions(1, "id", "desc");
       }
     }
   }, {
@@ -92372,14 +92372,14 @@ var AdminHome = /*#__PURE__*/function (_Component) {
     }
   }, {
     key: "getSuggestions",
-    value: function getSuggestions(page) {
+    value: function getSuggestions(page, sort, order) {
       var _this2 = this;
 
       var config = Object(_util_TokenConfig__WEBPACK_IMPORTED_MODULE_4__["default"])();
       this.setState({
         loading: true
       });
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("admin/suggestion?page=".concat(page), config).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("admin/suggestion?page=".concat(page, "&sort=").concat(sort, "&order=").concat(order), config).then(function (res) {
         _this2.setState({
           suggestions: res.data.suggestion.data,
           last_page: res.data.suggestion.last_page,
@@ -92401,7 +92401,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
     }
   }, {
     key: "getNineSuggestions",
-    value: function getNineSuggestions(page) {
+    value: function getNineSuggestions(page, sort, order) {
       var _this3 = this;
 
       var config = Object(_util_TokenConfig__WEBPACK_IMPORTED_MODULE_4__["default"])();
@@ -92430,7 +92430,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
     }
   }, {
     key: "getTenSuggestions",
-    value: function getTenSuggestions(page) {
+    value: function getTenSuggestions(page, sort, order) {
       var _this4 = this;
 
       var config = Object(_util_TokenConfig__WEBPACK_IMPORTED_MODULE_4__["default"])();
@@ -92480,7 +92480,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
           isError: isError
         });
 
-        _this5.getSuggestions(1);
+        _this5.getSuggestions(1, "id", "desc");
       })["catch"](function (error) {
         _this5.setState({
           loading: false
@@ -92515,7 +92515,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
           isError: isError
         });
 
-        _this6.getSuggestions(1);
+        _this6.getSuggestions(1, "id", "desc");
       })["catch"](function (error) {
         _this6.setState({
           loading: false
@@ -92553,7 +92553,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
           isError: isError
         });
 
-        _this7.getNineSuggestions(1);
+        _this7.getNineSuggestions(1, "id", "desc");
       })["catch"](function (error) {
         _this7.setState({
           loading: false
@@ -92588,7 +92588,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
           isError: isError
         });
 
-        _this8.getNineSuggestions(1);
+        _this8.getNineSuggestions(1, "id", "desc");
       })["catch"](function (error) {
         _this8.setState({
           loading: false
@@ -92626,7 +92626,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
           isError: isError
         });
 
-        _this9.getTenSuggestions(1);
+        _this9.getTenSuggestions(1, "id", "desc");
       })["catch"](function (error) {
         _this9.setState({
           loading: false
@@ -92661,7 +92661,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
           isError: isError
         });
 
-        _this10.getTenSuggestions(1);
+        _this10.getTenSuggestions(1, "id", "desc");
       })["catch"](function (error) {
         _this10.setState({
           loading: false
@@ -92727,7 +92727,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
       }, "Upload File")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, "Welcome to the admin panel where you can view suggestion sent over by users and decide whether to approve or deny them as per your desire. Please take detailed notice into the content uploaded for the safety of others."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-lg-10 col-md-10"
+        className: "col-lg-12 col-md-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         "class": "card mt-4 "
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -93155,6 +93155,10 @@ function SuggestNineTable(props) {
     setReviseSuggestion(suggestion);
   };
 
+  function handleSort(sort) {
+    getSuggestions(1, sort, "desc");
+  }
+
   var getMDate = function getMDate(currentDate) {
     var mydate = new Date(currentDate);
     var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
@@ -93164,17 +93168,41 @@ function SuggestNineTable(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
     "class": "table table-striped table-responsive w-100 d-block d-md-table"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Name ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(name);
+    }
+  }, "Name ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Mapping ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic9code);
+    }
+  }, "Mapping ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Mapping Change ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic10codeinput);
+    }
+  }, "Mapping Change ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Ic9Description ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic9description);
+    }
+  }, "Ic9Description ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Ic10AMDescription ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic10description);
+    }
+  }, "Ic10AMDescription ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reason"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Created Date ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Vote"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reason"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(created_at);
+    }
+  }, "Created Date ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Accept/Reject"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", {
     "class": "suggestion_list"
@@ -93197,7 +93225,7 @@ function SuggestNineTable(props) {
       "class": "fas fa-arrow-right text-primary"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
       "class": "text-primary"
-    }, suggestion.ic10descriptionsuggest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.reason), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, getMDate(suggestion.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+    }, suggestion.ic10descriptionsuggest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.vote), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.reason), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, getMDate(suggestion.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
       "class": "row justify-content-sm-around"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       "class": "btn btn-success btn-sm m-1 edit",
@@ -93332,17 +93360,9 @@ function SuggestionTable(props) {
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       _useState10 = _slicedToArray(_useState9, 2),
       anchorEl = _useState10[0],
-      setAnchorEl = _useState10[1];
+      setAnchorEl = _useState10[1]; // const [sort, setSort] = useState("id");
+  // const [order, setOrder] = useState("desc");
 
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])("id"),
-      _useState12 = _slicedToArray(_useState11, 2),
-      sort = _useState12[0],
-      setSort = _useState12[1];
-
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])("desc"),
-      _useState14 = _slicedToArray(_useState13, 2),
-      order = _useState14[0],
-      setOrder = _useState14[1];
 
   var handleClickOpen = function handleClickOpen(suggestion) {
     setOpen(true);
@@ -93389,23 +93409,47 @@ function SuggestionTable(props) {
     setAnchorEl(null);
   };
 
+  function handleSort(sort) {
+    getSuggestions(1, sort, "desc");
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
     "class": "table table-striped table-responsive w-100 d-block d-md-table"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
-    onClick: function onClick(e) {
-      return handlePopUpOpen(e, name);
+    onClick: function onClick() {
+      return handleSort(name);
     }
   }, "Name ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Mapping ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic9code);
+    }
+  }, "Mapping ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Mapping Change ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic10code);
+    }
+  }, "Mapping Change ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Ic9Description", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic9description);
+    }
+  }, "Ic9Description", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Ic10AMDescription ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic10description);
+    }
+  }, "Ic10AMDescription ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reason"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Created Date ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Vote"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reason"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(created_at);
+    }
+  }, "Created Date ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Accept/Reject"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", {
     "class": "suggestion_list"
@@ -93428,7 +93472,7 @@ function SuggestionTable(props) {
       "class": "fas fa-arrow-right text-primary"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
       "class": "text-primary"
-    }, suggestion.ic10descriptionsuggest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.reason), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, getMDate(suggestion.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+    }, suggestion.ic10descriptionsuggest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.vote), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.reason), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, getMDate(suggestion.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
       "class": "row justify-content-sm-around"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       "class": "btn btn-success btn-sm m-1 edit",
@@ -93492,12 +93536,14 @@ function SuggestionTable(props) {
     open: Boolean(anchorEl),
     onClose: handlePopUpClose
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    onClick: handlePopUpClose
-  }, "Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    onClick: handlePopUpClose
-  }, "My account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    onClick: handlePopUpClose
-  }, "Logout")));
+    onClick: function onClick() {
+      return handleSort();
+    }
+  }, "Sort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    onClick: function onClick() {
+      return handleSearch();
+    }
+  }, "Search")));
 }
 
 /***/ }),
@@ -93604,19 +93650,47 @@ function SuggestionTenTable(props) {
     return str;
   };
 
+  function handleSort(sort) {
+    getSuggestions(1, sort, "desc");
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
     "class": "table table-striped table-responsive w-100 d-block d-md-table"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Name ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(name);
+    }
+  }, "Name ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Mapping ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic10amcode);
+    }
+  }, "Mapping ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Mapping Change ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic10code);
+    }
+  }, "Mapping Change ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Ic10Description ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(ic10description);
+    }
+  }, "Ic10Description ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Ic10AMDescription ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(Ic10AMDescription);
+    }
+  }, "Ic10AMDescription ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reason"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Created Date ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "DescriptionChange"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Vote"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reason"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+    onClick: function onClick() {
+      return handleSort(created_at);
+    }
+  }, "Created Date ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
     "class": "fas fa-caret-down"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Accept/Reject"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", {
     "class": "suggestion_list"
@@ -93639,7 +93713,7 @@ function SuggestionTenTable(props) {
       "class": "fas fa-arrow-right text-primary"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
       "class": "text-primary"
-    }, suggestion.ic10amdescriptionsuggest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.reason), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, getMDate(suggestion.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+    }, suggestion.ic10amdescriptionsuggest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.vote), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.reason), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, getMDate(suggestion.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
       "class": "row justify-content-sm-around"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       "class": "btn btn-success btn-sm m-1 edit",

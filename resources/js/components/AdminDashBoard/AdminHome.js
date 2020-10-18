@@ -39,11 +39,11 @@ export default class AdminHome extends Component {
         let currentTable = e.target.value;
         this.setState({ currentTable: currentTable });
         if (currentTable === "ICD-9-mode") {
-            this.getSuggestions(1);
+            this.getSuggestions(1, "id", "desc");
         } else if (currentTable === "ICD-10-mode") {
-            this.getNineSuggestions(1);
+            this.getNineSuggestions(1, "id", "desc");
         } else {
-            this.getTenSuggestions(1);
+            this.getTenSuggestions(1, "id", "desc");
         }
     }
 
@@ -55,10 +55,13 @@ export default class AdminHome extends Component {
         this.getSuggestions(1);
     }
 
-    getSuggestions(page, sort, order, criteria) {
+    getSuggestions(page, sort, order) {
         let config = TokenConfig();
         this.setState({ loading: true });
-        Axios.get(`admin/suggestion?page=${page}&sort=`, config)
+        Axios.get(
+            `admin/suggestion?page=${page}&sort=${sort}&order=${order}`,
+            config
+        )
             .then(res => {
                 this.setState({
                     suggestions: res.data.suggestion.data,
@@ -77,10 +80,13 @@ export default class AdminHome extends Component {
             });
     }
 
-    getNineSuggestions(page) {
+    getNineSuggestions(page, sort, order) {
         let config = TokenConfig();
         this.setState({ loading: true });
-        Axios.get(`admin/suggestion_nine?page=${page}`, config)
+        Axios.get(
+            `admin/suggestion_nine?page=${page} &sort=${sort}&order=${order}`,
+            config
+        )
             .then(res => {
                 this.setState({
                     suggestionNine: res.data.suggestion.data,
@@ -99,10 +105,13 @@ export default class AdminHome extends Component {
             });
     }
 
-    getTenSuggestions(page) {
+    getTenSuggestions(page, sort, order) {
         let config = TokenConfig();
         this.setState({ loading: true });
-        Axios.get(`admin/suggestion_ten?page=${page}`, config)
+        Axios.get(
+            `admin/suggestion_ten?page=${page} &sort=${sort}&order=${order}`,
+            config
+        )
             .then(res => {
                 this.setState({
                     suggestionTen: res.data.suggestion.data,
@@ -132,7 +141,7 @@ export default class AdminHome extends Component {
                 };
                 let isError = false;
                 this.setResponse({ responseMessage, isError });
-                this.getSuggestions(1);
+                this.getSuggestions(1, "id", "desc");
             })
             .catch(error => {
                 this.setState({ loading: false });
@@ -155,7 +164,7 @@ export default class AdminHome extends Component {
                 };
                 let isError = false;
                 this.setResponse({ responseMessage, isError });
-                this.getSuggestions(1);
+                this.getSuggestions(1, "id", "desc");
             })
             .catch(error => {
                 this.setState({ loading: false });
@@ -179,7 +188,7 @@ export default class AdminHome extends Component {
                 };
                 let isError = false;
                 this.setResponse({ responseMessage, isError });
-                this.getNineSuggestions(1);
+                this.getNineSuggestions(1, "id", "desc");
             })
             .catch(error => {
                 this.setState({ loading: false });
@@ -202,7 +211,7 @@ export default class AdminHome extends Component {
                 };
                 let isError = false;
                 this.setResponse({ responseMessage, isError });
-                this.getNineSuggestions(1);
+                this.getNineSuggestions(1, "id", "desc");
             })
             .catch(error => {
                 this.setState({ loading: false });
@@ -226,7 +235,7 @@ export default class AdminHome extends Component {
                 };
                 let isError = false;
                 this.setResponse({ responseMessage, isError });
-                this.getTenSuggestions(1);
+                this.getTenSuggestions(1, "id", "desc");
             })
             .catch(error => {
                 this.setState({ loading: false });
@@ -249,7 +258,7 @@ export default class AdminHome extends Component {
                 };
                 let isError = false;
                 this.setResponse({ responseMessage, isError });
-                this.getTenSuggestions(1);
+                this.getTenSuggestions(1, "id", "desc");
             })
             .catch(error => {
                 this.setState({ loading: false });
@@ -297,7 +306,7 @@ export default class AdminHome extends Component {
         return (
             <div className="container-fluid row justify-content-center">
                 <SimpleBackdrop open={loading} />
-                <div className="col-lg-10 col-md-10">
+                <div className="col-lg-12 col-md-12">
                     <div className="card">
                         <div className="card-header records_header">
                             <h4>Admin Panel</h4>
@@ -318,7 +327,7 @@ export default class AdminHome extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-10 col-md-10">
+                <div className="col-lg-12 col-md-12">
                     <div class="card mt-4 ">
                         <div class="card-header records_header">
                             <h4>Suggestions</h4>
