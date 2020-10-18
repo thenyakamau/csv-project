@@ -19,6 +19,7 @@ class CreateRecordsTensTable extends Migration
             $table->longText('ICD-10 code descriptor');
             $table->string('ICD-10-AM Map')->nullable();
             $table->longText('ICD-10-AM code descriptor')->nullable();
+            $table->integer('votes')->nullable()->default(0);
             $table->timestamps();
         });
     }

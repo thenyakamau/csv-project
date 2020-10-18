@@ -154,7 +154,7 @@ export default function SuggestionTable(props) {
                                 <td class="text-primary">
                                     {suggestion.ic10descriptionsuggest}
                                 </td>
-                                <td>{suggestion.vote}</td>
+                                <td>{suggestion.votes}</td>
                                 <td>{suggestion.reason}</td>
 
                                 <td>{getMDate(suggestion.created_at)}</td>

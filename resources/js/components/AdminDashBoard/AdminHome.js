@@ -52,12 +52,13 @@ export default class AdminHome extends Component {
         if (auth_user.name == null || auth_user.type != "admin") {
             this.setState({ redirect: true });
         }
-        this.getSuggestions(1);
+        this.getSuggestions(1,"id","desc");
     }
 
     getSuggestions(page, sort, order) {
         let config = TokenConfig();
         this.setState({ loading: true });
+        console.log({sort, order});
         Axios.get(
             `admin/suggestion?page=${page}&sort=${sort}&order=${order}`,
             config

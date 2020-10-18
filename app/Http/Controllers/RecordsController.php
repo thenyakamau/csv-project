@@ -70,6 +70,14 @@ class RecordsController extends Controller
     {
         $record = Records::findOrFail($request->record_id);
         $suggestion = Suggestion::findOrFail($request->id);
+        $voteCount = $record->votes;
+        $usersCount = DB::table('users')->count();
+
+        if ($voteCount < $usersCount){
+            $record->votes = $voteCount +1;
+            $record->save();
+        }
+
         if (isset($request->ic9descriptionsuggest)) {
             $record->{'ICD-9-BPA code'} = $request->ic9codeinput;
             $record->{'ICD-9-BPA code description'} = $request->ic9descriptionsuggest;
@@ -92,6 +100,14 @@ class RecordsController extends Controller
     {
         $record = RecordNine::findOrFail($request->record_id);
         $suggestion = SuggestionNine::findOrFail($request->id);
+        $voteCount = $record->votes;
+        $usersCount = DB::table('users')->count();
+
+        if ($voteCount < $usersCount){
+            $record->votes = $voteCount +1;
+            $record->save();
+        }
+
 
         if (isset($request->ic9descriptionsuggest)) {
             $record->{'ICD9_Code'} = $request->ic9codeinput;

@@ -8,6 +8,7 @@ use App\Records;
 use App\RecordsTen;
 use App\Suggestion;
 use App\SuggestionTen;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -48,6 +49,14 @@ class RecordsTenController extends Controller
     {
         $record = RecordsTen::findOrFail($request->record_id);
         $suggestion = SuggestionTen::findOrFail($request->id);
+        $voteCount = $record->votes;
+        $usersCount = DB::table('users')->count();
+
+        if ($voteCount < $usersCount){
+            $record->votes = $voteCount +1;
+            $record->save();
+        }
+
         if (isset($request->ic10descriptionsuggest)) {
             $record->{'ICD-10 code'} = $request->ic10codeinput;
             $record->{'ICD-10 code descriptor'} = $request->ic10descriptionsuggest;

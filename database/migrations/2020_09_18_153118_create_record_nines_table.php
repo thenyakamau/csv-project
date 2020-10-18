@@ -19,6 +19,7 @@ class CreateRecordNinesTable extends Migration
             $table->longText('ICD9_Description');
             $table->string('ICD10_Code')->nullable();
             $table->longText('ICD10_Descriptiom')->nullable();
+            $table->integer('votes')->nullable()->default(0);
             $table->timestamps();
         });
     }

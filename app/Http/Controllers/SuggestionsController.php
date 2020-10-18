@@ -15,12 +15,17 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class SuggestionsController extends Controller
 {
+    public function getAllUsers()
+    {
+        $usersCount = DB::table('users')->count();
+        return response().json(['totalVotes'=>$usersCount]);
+    }
 
     public function getSuggestions(Request $request)
     {
         // $suggestions = Suggestion::paginate(10);
 
-        $suggestions = DB::table('suggestions')->orderBy($request->sort, 'desc')->paginate(10);
+        $suggestions = DB::table('suggestions')->join('records','records.id','suggestions.record_id')->select('suggestions.*','records.votes')->orderBy($request->sort, 'desc')->paginate(10);
 
         return response()->json(['suggestion' => $suggestions]);
     }

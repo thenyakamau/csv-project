@@ -22335,7 +22335,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".suggestion_list {\n    min-height: 300px;\n}\n\nth {\n    cursor: pointer;\n}", ""]);
+exports.push([module.i, ".suggestion_list {\r\n    min-height: 300px;\r\n}\r\n\r\nth {\r\n    cursor: pointer;\r\n}", ""]);
 
 // exports
 
@@ -22354,7 +22354,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".login_layout {\n    width: 100%;\n}\n\n.login_body {\n    display: flex;\n}\n\n.login_image {\n    flex: 1;\n    display: block;\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n}\n\n.login_image img {\n    height: 100%;\n    width: 100%;\n    margin: 50px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n.login_container {\n    flex: 1;\n    margin: 150px;\n}\n\n.login_container h2 {\n    text-align: center;\n    font-weight: bold;\n}\n\n.input_container {\n    width: 70%;\n}\n\n.login_input-div {\n    position: relative;\n    display: grid;\n    grid-template-columns: 7% 93%;\n    margin: 25px 0;\n    padding: 5px 0;\n    border-bottom: 2px solid #d9d9d9;\n}\n\n.login_input-div.one {\n    margin-top: 0;\n}\n\n.login_input-div .i {\n    color: #d9d9d9;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.login_input-div .i i {\n    transition: 0.3s;\n}\n\n.login_input-div>div {\n    position: relative;\n    height: 45px;\n}\n\n.login_input-div>div>h5 {\n    position: absolute;\n    left: 10px;\n    top: 50%;\n    transform: translateY(-50%);\n    color: #999;\n    font-size: 18px;\n    transition: 0.3s;\n}\n\n.login_input-div:before,\n.login_input-div:after {\n    content: \"\";\n    position: absolute;\n    bottom: -2px;\n    width: 0%;\n    height: 2px;\n    background-color: #38d39f;\n    transition: 0.4s;\n}\n\n.login_input-div:before {\n    right: 50%;\n}\n\n.login_input-div:after {\n    left: 50%;\n}\n\n.input-div.focus:before,\n.input-div.focus:after {\n    width: 50%;\n}\n\n.login_input-div.focus>div>h5 {\n    top: -5px;\n    font-size: 15px;\n}\n\n.login_input-div.focus>.i>i {\n    color: #38d39f;\n}\n\n.login_input-div>div>input {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    border: none;\n    outline: none;\n    background: none;\n    padding: 0.5rem 0.7rem;\n    font-size: 1.2rem;\n    color: #555;\n    font-family: \"poppins\", sans-serif;\n}\n\n.login_input-div.pass {\n    margin-bottom: 4px;\n}\n\n.forgot_container {\n    width: 100%;\n    display: flex;\n}\n\n.remeber_me_container {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.remeber_me_container p {\n    margin-left: 15px;\n    width: 300px;\n}\n\n.remeber_me_container input {\n    margin-bottom: 15px;\n    cursor: pointer;\n}\n\n.login_container a {\n    display: block;\n    width: 100%;\n    text-align: right;\n    float: right;\n    text-decoration: none;\n    color: #999;\n    font-size: 0.9rem;\n    transition: 0.3s;\n    cursor: pointer;\n}\n\n.login_container a:hover {\n    color: #38d39f;\n    text-decoration: underline;\n}\n\n.btn_login {\n    display: block;\n    width: 100%;\n    height: 50px;\n    border-radius: 25px;\n    outline: none;\n    border: none;\n    background-color: #280680;\n    background-size: 200%;\n    font-size: 1.2rem;\n    color: #fff;\n    font-family: \"Poppins\", sans-serif;\n    text-transform: uppercase;\n    margin: 1rem 0;\n    cursor: pointer;\n    transition: 0.5s;\n}\n\n.btn_login:hover {\n    background-color: #303f9f;\n}\n\n.url_link {\n    width: 100%;\n}\n\n.url_label {\n    float: right;\n    color: grey;\n    font-size: 20px;\n    font-weight: 600;\n    cursor: pointer;\n}\n\n.url_label:hover {\n    color: #32be8f;\n    text-decoration: underline;\n}\n\n.login_container h3 {\n    font-weight: 600;\n    text-align: center;\n    color: grey;\n}\n\n.login_social_icon {\n    display: flex;\n    justify-content: space-around;\n}\n\n@media screen and (max-width: 900px) {\n    .login_image {\n        display: none;\n    }\n    .login_container {\n        justify-content: center;\n        /* margin: 10px;\n        margin-top: 150px; */\n    }\n    .login_container h2 {\n        font-size: 2.4rem;\n        margin: 8px 0;\n    }\n    .login_body {\n        display: block;\n    }\n    .input_container {\n        width: 100%;\n    }\n}\n\n@media screen and (max-width: 650px) {\n    .login_container {\n        justify-content: center;\n        margin: 10px;\n        margin-top: 150px;\n    }\n}", ""]);
+exports.push([module.i, ".login_layout {\r\n    width: 100%;\r\n}\r\n\r\n.login_body {\r\n    display: flex;\r\n}\r\n\r\n.login_image {\r\n    flex: 1;\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: hidden;\r\n}\r\n\r\n.login_image img {\r\n    height: 100%;\r\n    width: 100%;\r\n    margin: 50px;\r\n    -o-object-fit: cover;\r\n       object-fit: cover;\r\n}\r\n\r\n.login_container {\r\n    flex: 1;\r\n    margin: 150px;\r\n}\r\n\r\n.login_container h2 {\r\n    text-align: center;\r\n    font-weight: bold;\r\n}\r\n\r\n.input_container {\r\n    width: 70%;\r\n}\r\n\r\n.login_input-div {\r\n    position: relative;\r\n    display: grid;\r\n    grid-template-columns: 7% 93%;\r\n    margin: 25px 0;\r\n    padding: 5px 0;\r\n    border-bottom: 2px solid #d9d9d9;\r\n}\r\n\r\n.login_input-div.one {\r\n    margin-top: 0;\r\n}\r\n\r\n.login_input-div .i {\r\n    color: #d9d9d9;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.login_input-div .i i {\r\n    transition: 0.3s;\r\n}\r\n\r\n.login_input-div>div {\r\n    position: relative;\r\n    height: 45px;\r\n}\r\n\r\n.login_input-div>div>h5 {\r\n    position: absolute;\r\n    left: 10px;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    color: #999;\r\n    font-size: 18px;\r\n    transition: 0.3s;\r\n}\r\n\r\n.login_input-div:before,\r\n.login_input-div:after {\r\n    content: \"\";\r\n    position: absolute;\r\n    bottom: -2px;\r\n    width: 0%;\r\n    height: 2px;\r\n    background-color: #38d39f;\r\n    transition: 0.4s;\r\n}\r\n\r\n.login_input-div:before {\r\n    right: 50%;\r\n}\r\n\r\n.login_input-div:after {\r\n    left: 50%;\r\n}\r\n\r\n.input-div.focus:before,\r\n.input-div.focus:after {\r\n    width: 50%;\r\n}\r\n\r\n.login_input-div.focus>div>h5 {\r\n    top: -5px;\r\n    font-size: 15px;\r\n}\r\n\r\n.login_input-div.focus>.i>i {\r\n    color: #38d39f;\r\n}\r\n\r\n.login_input-div>div>input {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    border: none;\r\n    outline: none;\r\n    background: none;\r\n    padding: 0.5rem 0.7rem;\r\n    font-size: 1.2rem;\r\n    color: #555;\r\n    font-family: \"poppins\", sans-serif;\r\n}\r\n\r\n.login_input-div.pass {\r\n    margin-bottom: 4px;\r\n}\r\n\r\n.forgot_container {\r\n    width: 100%;\r\n    display: flex;\r\n}\r\n\r\n.remeber_me_container {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.remeber_me_container p {\r\n    margin-left: 15px;\r\n    width: 300px;\r\n}\r\n\r\n.remeber_me_container input {\r\n    margin-bottom: 15px;\r\n    cursor: pointer;\r\n}\r\n\r\n.login_container a {\r\n    display: block;\r\n    width: 100%;\r\n    text-align: right;\r\n    float: right;\r\n    text-decoration: none;\r\n    color: #999;\r\n    font-size: 0.9rem;\r\n    transition: 0.3s;\r\n    cursor: pointer;\r\n}\r\n\r\n.login_container a:hover {\r\n    color: #38d39f;\r\n    text-decoration: underline;\r\n}\r\n\r\n.btn_login {\r\n    display: block;\r\n    width: 100%;\r\n    height: 50px;\r\n    border-radius: 25px;\r\n    outline: none;\r\n    border: none;\r\n    background-color: #280680;\r\n    background-size: 200%;\r\n    font-size: 1.2rem;\r\n    color: #fff;\r\n    font-family: \"Poppins\", sans-serif;\r\n    text-transform: uppercase;\r\n    margin: 1rem 0;\r\n    cursor: pointer;\r\n    transition: 0.5s;\r\n}\r\n\r\n.btn_login:hover {\r\n    background-color: #303f9f;\r\n}\r\n\r\n.url_link {\r\n    width: 100%;\r\n}\r\n\r\n.url_label {\r\n    float: right;\r\n    color: grey;\r\n    font-size: 20px;\r\n    font-weight: 600;\r\n    cursor: pointer;\r\n}\r\n\r\n.url_label:hover {\r\n    color: #32be8f;\r\n    text-decoration: underline;\r\n}\r\n\r\n.login_container h3 {\r\n    font-weight: 600;\r\n    text-align: center;\r\n    color: grey;\r\n}\r\n\r\n.login_social_icon {\r\n    display: flex;\r\n    justify-content: space-around;\r\n}\r\n\r\n@media screen and (max-width: 900px) {\r\n    .login_image {\r\n        display: none;\r\n    }\r\n    .login_container {\r\n        justify-content: center;\r\n        /* margin: 10px;\r\n        margin-top: 150px; */\r\n    }\r\n    .login_container h2 {\r\n        font-size: 2.4rem;\r\n        margin: 8px 0;\r\n    }\r\n    .login_body {\r\n        display: block;\r\n    }\r\n    .input_container {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (max-width: 650px) {\r\n    .login_container {\r\n        justify-content: center;\r\n        margin: 10px;\r\n        margin-top: 150px;\r\n    }\r\n}", ""]);
 
 // exports
 
@@ -22373,7 +22373,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".search_bar {\n    display: flex;\n    /* justify-content: end; */\n}\n\n.search_header {\n    padding: 20px;\n    align-items: center;\n}\n\n.search_bar label {\n    font-size: 16px;\n}\n\n.search_bar input {\n    width: 300px;\n}\n\n.drop_down {\n    height: 45px;\n    width: 180px;\n    font-size: 20px;\n    font-weight: 600;\n    align-items: center;\n    justify-content: center;\n    width: 250px;\n    cursor: pointer;\n}\n\n.drop_down_items {\n    display: flex;\n    justify-content: space-around;\n    width: 180px;\n    height: 45px;\n}\n\n.searh_button {\n    width: 100px;\n    height: 48px;\n    font-size: 20px;\n    font-weight: 600;\n    align-items: center;\n    justify-content: center;\n    width: 150px;\n    cursor: pointer;\n    background-color: #3949ab;\n    color: white;\n}\n\n.search_button_items {\n    margin-top: 10px;\n    display: flex;\n    justify-content: space-around;\n    width: 100%;\n}\n\n.card_display {\n    width: 100%;\n    justify-content: center;\n}\n\n.records_header {\n    display: flex;\n    width: 100%;\n    justify-content: space-between;\n}", ""]);
+exports.push([module.i, ".search_bar {\r\n    display: flex;\r\n    /* justify-content: end; */\r\n}\r\n\r\n.search_header {\r\n    padding: 20px;\r\n    align-items: center;\r\n}\r\n\r\n.search_bar label {\r\n    font-size: 16px;\r\n}\r\n\r\n.search_bar input {\r\n    width: 300px;\r\n}\r\n\r\n.drop_down {\r\n    height: 45px;\r\n    width: 180px;\r\n    font-size: 20px;\r\n    font-weight: 600;\r\n    align-items: center;\r\n    justify-content: center;\r\n    width: 250px;\r\n    cursor: pointer;\r\n}\r\n\r\n.drop_down_items {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    width: 180px;\r\n    height: 45px;\r\n}\r\n\r\n.searh_button {\r\n    width: 100px;\r\n    height: 48px;\r\n    font-size: 20px;\r\n    font-weight: 600;\r\n    align-items: center;\r\n    justify-content: center;\r\n    width: 150px;\r\n    cursor: pointer;\r\n    background-color: #3949ab;\r\n    color: white;\r\n}\r\n\r\n.search_button_items {\r\n    margin-top: 10px;\r\n    display: flex;\r\n    justify-content: space-around;\r\n    width: 100%;\r\n}\r\n\r\n.card_display {\r\n    width: 100%;\r\n    justify-content: center;\r\n}\r\n\r\n.records_header {\r\n    display: flex;\r\n    width: 100%;\r\n    justify-content: space-between;\r\n}", ""]);
 
 // exports
 
@@ -22392,7 +22392,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".nav_layout {\n    background-color: #006064;\n}\n\n.nav_layout a {\n    font-size: 16px;\n    font-weight: bold;\n}", ""]);
+exports.push([module.i, ".nav_layout {\r\n    background-color: #006064;\r\n}\r\n\r\n.nav_layout a {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n}", ""]);
 
 // exports
 
@@ -92368,7 +92368,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
         });
       }
 
-      this.getSuggestions(1);
+      this.getSuggestions(1, "id", "desc");
     }
   }, {
     key: "getSuggestions",
@@ -92378,6 +92378,10 @@ var AdminHome = /*#__PURE__*/function (_Component) {
       var config = Object(_util_TokenConfig__WEBPACK_IMPORTED_MODULE_4__["default"])();
       this.setState({
         loading: true
+      });
+      console.log({
+        sort: sort,
+        order: order
       });
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("admin/suggestion?page=".concat(page, "&sort=").concat(sort, "&order=").concat(order), config).then(function (res) {
         _this2.setState({
@@ -92408,7 +92412,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
       this.setState({
         loading: true
       });
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("admin/suggestion_nine?page=".concat(page), config).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("admin/suggestion_nine?page=".concat(page, " &sort=").concat(sort, "&order=").concat(order), config).then(function (res) {
         _this3.setState({
           suggestionNine: res.data.suggestion.data,
           last_page: res.data.suggestion.last_page,
@@ -92437,7 +92441,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
       this.setState({
         loading: true
       });
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("admin/suggestion_ten?page=".concat(page), config).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("admin/suggestion_ten?page=".concat(page, " &sort=").concat(sort, "&order=").concat(order), config).then(function (res) {
         _this4.setState({
           suggestionTen: res.data.suggestion.data,
           last_page: res.data.suggestion.last_page,
@@ -92716,7 +92720,7 @@ var AdminHome = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_widgets_SimpleBackDrop__WEBPACK_IMPORTED_MODULE_5__["default"], {
         open: loading
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-lg-10 col-md-10"
+        className: "col-lg-12 col-md-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -93472,7 +93476,7 @@ function SuggestionTable(props) {
       "class": "fas fa-arrow-right text-primary"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
       "class": "text-primary"
-    }, suggestion.ic10descriptionsuggest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.vote), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.reason), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, getMDate(suggestion.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+    }, suggestion.ic10descriptionsuggest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.votes), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, suggestion.reason), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, getMDate(suggestion.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
       "class": "row justify-content-sm-around"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       "class": "btn btn-success btn-sm m-1 edit",
@@ -97290,8 +97294,8 @@ function SimpleBackdrop(props) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/csv-project/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/csv-project/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\kim\Desktop\JOB\laravel\csv-project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\kim\Desktop\JOB\laravel\csv-project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

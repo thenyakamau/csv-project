@@ -15,17 +15,17 @@ class CreateSuggestionTensTable extends Migration
     {
         Schema::create('suggestion_tens', function (Blueprint $table) {
             $table->id();
-            $table->string('ic10code');
+            $table->string('ic10code')->nullable();
             $table->string('ic10codeinput')->nullable();
-            $table->longText('ic10description');
+            $table->longText('ic10description')->nullable();
             $table->longText('ic10descriptionsuggest')->nullable();
-            $table->string('ic10amcode');
+            $table->string('ic10amcode')->nullable();
             $table->string('ic10amcodeinput')->nullable();
-            $table->longText('ic10amdescription');
+            $table->longText('ic10amdescription')->nullable();
             $table->longText('ic10amdescriptionsuggest')->nullable();
-            $table->string('name');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('record_id');
+            $table->string('name')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('record_id')->nullable();
             $table->longText('reason')->nullable();
             $table->timestamps();
 
