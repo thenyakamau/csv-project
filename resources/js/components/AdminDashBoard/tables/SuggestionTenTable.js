@@ -90,12 +90,12 @@ export default function SuggestionTenTable(props) {
                             Mapping Change <i class="fas fa-caret-down"></i>
                         </th>
                         <th onClick={() => handleSort(ic10description)}>
-                            Ic10Description <i class="fas fa-caret-down"></i>
+                            Icd10Description <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>
                         <th onClick={() => handleSort(Ic10AMDescription)}>
-                            Ic10AMDescription <i class="fas fa-caret-down"></i>
+                            Icd10AMDescription <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>

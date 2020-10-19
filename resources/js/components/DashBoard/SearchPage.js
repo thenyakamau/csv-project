@@ -249,11 +249,7 @@ export default class SearchPage extends Component {
                         </label>
                     </div>
                     <div className="card-body">
-                        Use the switch on the the search box to toggle between
-                        ICD-9 and ICD-10 codes. You may type the entire code or
-                        a fraction of the code into the search box for results.
-                        The initial data is to give a concept of how the data
-                        should seem plus dummy searches.
+                        Use the switch on the search box to toggle between the different mappings of ICD and input the desired target code to display its corresponding mapping
                     </div>
                 </div>
 

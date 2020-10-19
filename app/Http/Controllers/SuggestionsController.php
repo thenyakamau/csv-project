@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Exports\SuggestionExport;
 use App\Exports\SuggestionTenExport;
 use App\Exports\SuggestNineExport;
+use App\RecordNine;
+use App\Records;
+use App\RecordsTen;
 use App\Suggestion;
 use App\SuggestionNine;
 use App\SuggestionTen;
@@ -25,7 +28,7 @@ class SuggestionsController extends Controller
     {
         // $suggestions = Suggestion::paginate(10);
 
-        $suggestions = DB::table('suggestions')->join('records','records.id','suggestions.record_id')->select('suggestions.*','records.votes')->orderBy($request->sort, 'desc')->paginate(10);
+        $suggestions = DB::table('suggestions')->join('records','records.id','suggestions.record_id')->select('suggestions.*','records.vote')->orderBy($request->sort, 'desc')->paginate(10);
 
         return response()->json(['suggestion' => $suggestions]);
     }
@@ -66,6 +69,22 @@ class SuggestionsController extends Controller
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
         $suggestion->reason = $request->reason;
 
+//        $record = Records::where('id',$request->id)->first();
+        $record = DB::table('records')->where('id',$request->id);
+        $voteCount = Records::where('vote',$request->id)->first();
+        $usersCount = DB::table('users')->count();
+
+        $votes = Records::where('vote',$request->id)->first() + 1;
+        $record->update(['vote'=>$votes]);
+
+
+        RecordNine::find($request->id)->increment('vote',5);
+//        if ($voteCount < $usersCount){
+//            $voteCount = ++$voteCount;
+//            $record->vote = ++$voteCount;
+//            $record->save();
+//        }
+
         if ($suggestion->save()) {
             return response()->json(['message' => 'Suggestion has been submitted']);
         } else {
@@ -80,6 +99,7 @@ class SuggestionsController extends Controller
             'ic10descriptionsuggest' => 'required',
             'ic10amdescriptionsuggest' => 'required',
         ]);
+
         $suggestion = new SuggestionTen();
         $suggestion->user_id = Auth::user()->id;
         $suggestion->name = Auth::user()->name;
@@ -93,6 +113,21 @@ class SuggestionsController extends Controller
         $suggestion->ic10description = $request->ic10description;
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
         $suggestion->reason = $request->reason;
+
+//        $record = RecordsTen::where('id',$request->id)->first();
+        $record = DB::table('record_tens')->where('id',$request->id);
+        $voteCount = RecordsTen::where('vote',$request->id)->first();
+        $usersCount = DB::table('users')->count();
+
+        $votes = RecordsTen::where('vote',$request->id)->first() + 1;
+        $record->update(['vote'=>$votes]);
+        RecordsTen::find($request->id)->increment('vote',1);
+
+//        if ($voteCount < $usersCount){
+//            $voteCount = ++$voteCount;
+//            $record->vote = ++$voteCount;
+//            $record->save();
+//        }
 
         if ($suggestion->save()) {
             return response()->json(['message' => 'Suggestion has been submitted']);
@@ -122,6 +157,22 @@ class SuggestionsController extends Controller
         $suggestion->ic10description = $request->ic10description;
         $suggestion->ic10descriptionsuggest = $request->ic10descriptionsuggest;
         $suggestion->reason = $request->reason;
+
+//        $record = RecordNine::where('id',$request->id)->first();
+        $record = DB::table('records_nine')->where('id',$request->id);
+        $voteCount = RecordNine::where('vote',$request->id)->first();
+        $usersCount = DB::table('users')->count();
+
+        $votes = RecordNine::where('vote',$request->id)->first() + 1;
+        $record->update(['vote'=>$votes]);
+
+        RecordNine::find($request->id)->increment('vote',1);
+
+//        if ($voteCount < $usersCount){
+//            $voteCount = ++$voteCount;
+//            $record->votes = ++$voteCount;
+//            $record->save();
+//        }
 
         if ($suggestion->save()) {
             return response()->json(['message' => 'Suggestion has been submitted']);

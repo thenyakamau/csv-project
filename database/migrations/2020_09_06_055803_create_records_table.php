@@ -20,7 +20,7 @@ class CreateRecordsTable extends Migration
             $table->string('Valid ICD-9-BPA code')->nullable();
             $table->longText('ICD-10-AM 1st edition code map 1')->nullable();
             $table->longText('ICD-10-AM code description map 1')->nullable();
-            $table->integer('votes')->nullable()->default(0);
+            $table->integer('vote')->nullable()->default(0);
             $table->timestamps();
         });
     }

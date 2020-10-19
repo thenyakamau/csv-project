@@ -90,13 +90,13 @@ export default function SuggestNineTable(props) {
                             Mapping Change <i class="fas fa-caret-down"></i>
                         </th>
                         <th onClick={() => handleSort(ic9description)}>
-                            Ic9Description <i class="fas fa-caret-down"></i>
+                            Icd9Description <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>
 
                         <th onClick={() => handleSort(ic10description)}>
-                            Ic10AMDescription <i class="fas fa-caret-down"></i>
+                            Icd10AMDescription <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>

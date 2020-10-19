@@ -2,23 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b82f24bf-b63c-432d-b918-e78ac0658fc0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/csv-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecordsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecordsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecordsTenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecordsTenController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SuggestionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SuggestionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/RecordNine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/RecordNine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Records.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Records.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/RecordsTen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/RecordsTen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_06_055803_create_records_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_06_055803_create_records_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_06_184715_create_suggestions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_06_184715_create_suggestions_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_165620_create_records_tens_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_165620_create_records_tens_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_08_003123_create_suggestion_tens_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_08_003123_create_suggestion_tens_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_18_153118_create_record_nines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_18_153118_create_record_nines_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_18_181411_create_suggestion_nines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_18_181411_create_suggestion_nines_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AdminDashBoard/AdminHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AdminDashBoard/AdminHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AdminDashBoard/tables/SuggestNineTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AdminDashBoard/tables/SuggestNineTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/AdminDashBoard/tables/SuggestionTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AdminDashBoard/tables/SuggestionTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AdminDashBoard/tables/SuggestionTenTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AdminDashBoard/tables/SuggestionTenTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DashBoard/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DashBoard/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DashBoard/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DashBoard/SearchPage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -268,6 +265,7 @@
       <workItem from="1603027199797" duration="73000" />
       <workItem from="1603027274195" duration="6760000" />
       <workItem from="1603039118695" duration="219000" />
+      <workItem from="1603103955066" duration="691000" />
     </task>
     <servers />
   </component>

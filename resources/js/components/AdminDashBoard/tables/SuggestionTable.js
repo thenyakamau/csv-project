@@ -104,13 +104,13 @@ export default function SuggestionTable(props) {
                             Mapping Change <i class="fas fa-caret-down"></i>
                         </th>
                         <th onClick={() => handleSort(ic9description)}>
-                            Ic9Description<i class="fas fa-caret-down"></i>
+                            Icd9Description<i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>
 
                         <th onClick={() => handleSort(ic10description)}>
-                            Ic10AMDescription <i class="fas fa-caret-down"></i>
+                            Icd10AMDescription <i class="fas fa-caret-down"></i>
                         </th>
                         <th></th>
                         <th>DescriptionChange</th>
@@ -154,7 +154,7 @@ export default function SuggestionTable(props) {
                                 <td class="text-primary">
                                     {suggestion.ic10descriptionsuggest}
                                 </td>
-                                <td>{suggestion.votes}</td>
+                                <td>{suggestion.vote}</td>
                                 <td>{suggestion.reason}</td>
 
                                 <td>{getMDate(suggestion.created_at)}</td>
